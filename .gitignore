@@ -1,0 +1,17 @@
+# ===== Auto generated ignore for large folders =====
+T5/
+data/
+checkpoints/
+text_cache/
+wandb/
+# 常见缓存/编译产物
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# 大型权重文件
+*.pt
+*.pth
+*.tar
+*.ckpt
+# ================================================
