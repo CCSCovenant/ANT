@@ -59,7 +59,9 @@ class T2MUnet(nn.Module):
         if self.use_sta:
             print("Building STA connector.")
             self.sta_model = STA(
-                input_dim=text_latent_dim,
+                # 改动1（中文注释）：当开启 STA 时，输入维度应当为"原始文本编码器维度"，以复现旧逻辑"STA 内部自己做输入映射（proj_in）"。
+                # 之前是传入 text_latent_dim（例如256），会造成与旧权重不一致（例如T5应为2048）。
+                input_dim=text_encoder_dim,
                 is_abstractor=getattr(config, "is_abstractor", True),
                 enable_noise=getattr(config, "enable_noise", False),
                 num_latents=getattr(config, "laten_size", 77),
@@ -106,17 +108,25 @@ class T2MUnet(nn.Module):
         """
         优先级: proj_embeds > raw_embeds > text
         1) 若直接给 proj_embeds, 原样返回;  
-        2) 若给 raw_embeds, 只运行可训练投影;  
-        3) 否则根据 text 调用 processor 两步完成.
+        2) 若给 raw_embeds, 仅在未启用 STA 时进行可训练投影;  
+        3) 否则根据 text 获取 raw，并在未启用 STA 时进行可训练投影。
+        开启 STA 时将直接返回"原始编码器输出"（仅做必要的形状变换），以复现旧逻辑：
+        "如果启动 STA 模块，则不走线性层（由 STA 内部的 proj_in 接收原始维度）"。
         """
         if proj_embeds is not None:
             return proj_embeds                                            # 已是最终形式
         if raw_embeds is not None:
-            return self.text_processor.project_embeds(raw_embeds)         # 仅投影
-        # 否则需完整流程
+            # 若外部直接给出 raw_embeds
+            if self.use_sta:
+                return raw_embeds              # 开启 STA：跳过投影，直通给 STA
+            return self.text_processor.project_embeds(raw_embeds)         # 未开启 STA：按原逻辑投影
+        # 注意 encode_text的形状适配在text_processor里执行.
+        # 否则需完整流程：先拿 raw，再根据是否启用 STA 决定是否投影
         assert text is not None, "Either text / raw_embeds / proj_embeds must be provided."
         raw = self.text_processor.get_raw_embeds(text)                    # no-grad
-        return self.text_processor.project_embeds(raw)                    # trainable
+        if self.use_sta:
+            return raw_embeds                                # 开启 STA：返回原始编码器输出（形状适配）
+        return self.text_processor.project_embeds(raw)                    # 未开启 STA：可训练投影
 
     # --------------------------------------------------------------------- #
     # 4. forward
