@@ -1,0 +1,199 @@
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+------------ Options -------------
+abstractor: True
+base_dim: 512
+batch_size: 64
+batch_size_eval: 32
+beta_schedule: linear
+cfg_scale: 2.5
+cfg_scheduler_type: none
+checkpoints_dir: ./checkpoints
+clip_grad_norm: 1
+cond_mask_prob: 0.1
+continue_ckpt: latest.tar
+dataset_name: t2m
+decay_rate: 0.9
+diffuser_name: dpmsolver
+diffusion_steps: 1000
+dim_mults: [2, 2, 2, 2]
+disable_sta: False
+diversity_times: 300
+dropout: 0.1
+enable_cfg_scheduler: False
+enable_trace: False
+eval_meta_dir: ./data
+evaluator_dir: ./data/pretrained_models
+evl_mode: fid
+feat_bias: 5
+glove_dir: ./data/glove
+is_continue: False
+laten_size: 77
+latent_dim: 512
+log_every: 500
+lr: 0.0001
+mm_num_repeats: 30
+mm_num_samples: 100
+mm_num_times: 10
+model_ema: False
+model_ema_decay: 0.9999
+model_ema_steps: 32
+name: t2m
+no_adagn: False
+no_eff: False
+no_ema: False
+no_fp16: False
+num_inference_steps: 10
+num_layers: 8
+num_train_steps: 200000
+opt_path: 
+prediction_type: sample
+replication_times: 20
+save_interval: 5000
+seed: 0
+text_encoder_type: t5
+text_latent_dim: 256
+time_dim: 512
+update_lr_steps: 5000
+use_text_cache: True
+weight_decay: 0.01
+which_ckpt: latest_120000
+-------------- End ----------------
+
+ Loading train mode HumanML3D train dataset ...
+  0%|          | 0/23384 [00:00<?, ?it/s]  1%|          | 255/23384 [00:00<00:09, 2540.65it/s]  2%|▏         | 519/23384 [00:00<00:08, 2596.46it/s]  3%|▎         | 798/23384 [00:00<00:08, 2683.72it/s]  5%|▍         | 1085/23384 [00:00<00:08, 2754.78it/s]  6%|▌         | 1372/23384 [00:00<00:07, 2793.37it/s]  7%|▋         | 1652/23384 [00:00<00:07, 2753.99it/s]  8%|▊         | 1928/23384 [00:00<00:07, 2731.18it/s]  9%|▉         | 2202/23384 [00:00<00:07, 2708.90it/s] 11%|█         | 2473/23384 [00:00<00:07, 2697.46it/s] 12%|█▏        | 2743/23384 [00:01<00:07, 2658.20it/s] 13%|█▎        | 3016/23384 [00:01<00:07, 2677.86it/s] 14%|█▍        | 3296/23384 [00:01<00:07, 2714.20it/s] 15%|█▌        | 3579/23384 [00:01<00:07, 2746.56it/s] 17%|█▋        | 3860/23384 [00:01<00:07, 2763.70it/s] 18%|█▊        | 4139/23384 [00:01<00:06, 2768.42it/s] 19%|█▉        | 4416/23384 [00:01<00:06, 2744.20it/s] 20%|██        | 4691/23384 [00:01<00:06, 2711.14it/s] 21%|██        | 4967/23384 [00:01<00:06, 2724.84it/s] 22%|██▏       | 5245/23384 [00:01<00:06, 2739.54it/s] 24%|██▎       | 5528/23384 [00:02<00:06, 2763.54it/s] 25%|██▍       | 5805/23384 [00:02<00:06, 2759.90it/s] 26%|██▌       | 6086/23384 [00:02<00:06, 2774.56it/s] 27%|██▋       | 6364/23384 [00:02<00:06, 2764.88it/s] 28%|██▊       | 6641/23384 [00:02<00:06, 2734.95it/s] 30%|██▉       | 6926/23384 [00:02<00:05, 2765.56it/s] 31%|███       | 7216/23384 [00:02<00:05, 2803.73it/s] 32%|███▏      | 7497/23384 [00:02<00:05, 2779.61it/s] 33%|███▎      | 7776/23384 [00:02<00:05, 2774.07it/s] 34%|███▍      | 8054/23384 [00:03<00:08, 1782.63it/s] 36%|███▌      | 8329/23384 [00:03<00:07, 1989.54it/s] 37%|███▋      | 8608/23384 [00:03<00:06, 2176.03it/s] 38%|███▊      | 8884/23384 [00:03<00:06, 2320.34it/s] 39%|███▉      | 9161/23384 [00:03<00:05, 2438.35it/s] 40%|████      | 9425/23384 [00:03<00:05, 2481.23it/s] 41%|████▏     | 9702/23384 [00:03<00:05, 2561.76it/s] 43%|████▎     | 9984/23384 [00:03<00:05, 2633.64it/s] 44%|████▍     | 10262/23384 [00:03<00:04, 2675.09it/s] 45%|████▌     | 10536/23384 [00:04<00:04, 2688.79it/s] 46%|████▌     | 10809/23384 [00:04<00:04, 2635.53it/s] 47%|████▋     | 11079/23384 [00:04<00:04, 2652.17it/s] 49%|████▊     | 11347/23384 [00:04<00:04, 2658.87it/s] 50%|████▉     | 11615/23384 [00:04<00:04, 2631.97it/s] 51%|█████     | 11891/23384 [00:04<00:04, 2667.42it/s] 52%|█████▏    | 12170/23384 [00:04<00:04, 2700.75it/s] 53%|█████▎    | 12447/23384 [00:04<00:04, 2719.52it/s] 54%|█████▍    | 12731/23384 [00:04<00:03, 2753.44it/s] 56%|█████▌    | 13012/23384 [00:04<00:03, 2769.18it/s] 57%|█████▋    | 13290/23384 [00:05<00:03, 2723.37it/s] 58%|█████▊    | 13563/23384 [00:05<00:03, 2697.50it/s] 59%|█████▉    | 13843/23384 [00:05<00:03, 2725.59it/s] 60%|██████    | 14116/23384 [00:05<00:03, 2726.62it/s] 62%|██████▏   | 14395/23384 [00:05<00:03, 2744.62it/s] 63%|██████▎   | 14670/23384 [00:05<00:03, 2741.70it/s] 64%|██████▍   | 14946/23384 [00:05<00:03, 2745.55it/s] 65%|██████▌   | 15221/23384 [00:05<00:02, 2739.06it/s] 66%|██████▋   | 15495/23384 [00:05<00:02, 2738.54it/s] 67%|██████▋   | 15773/23384 [00:05<00:02, 2749.39it/s] 69%|██████▊   | 16048/23384 [00:06<00:02, 2731.94it/s] 70%|██████▉   | 16322/23384 [00:06<00:02, 2700.53it/s] 71%|███████   | 16593/23384 [00:06<00:02, 2701.40it/s] 72%|███████▏  | 16873/23384 [00:06<00:02, 2728.52it/s] 73%|███████▎  | 17152/23384 [00:06<00:02, 2743.44it/s] 75%|███████▍  | 17434/23384 [00:06<00:02, 2764.15it/s] 76%|███████▌  | 17711/23384 [00:06<00:02, 2746.67it/s] 77%|███████▋  | 17986/23384 [00:06<00:01, 2737.99it/s] 78%|███████▊  | 18260/23384 [00:06<00:01, 2734.77it/s] 79%|███████▉  | 18554/23384 [00:06<00:01, 2795.54it/s] 81%|████████  | 18840/23384 [00:07<00:01, 2814.61it/s] 82%|████████▏ | 19122/23384 [00:07<00:01, 2815.03it/s] 83%|████████▎ | 19408/23384 [00:07<00:01, 2826.94it/s] 84%|████████▍ | 19694/23384 [00:07<00:01, 2835.49it/s] 85%|████████▌ | 19978/23384 [00:07<00:01, 2818.56it/s] 87%|████████▋ | 20260/23384 [00:07<00:01, 2816.82it/s] 88%|████████▊ | 20546/23384 [00:07<00:01, 2826.48it/s] 89%|████████▉ | 20829/23384 [00:07<00:00, 2763.23it/s] 90%|█████████ | 21106/23384 [00:07<00:00, 2686.09it/s] 91%|█████████▏| 21381/23384 [00:07<00:00, 2703.74it/s] 93%|█████████▎| 21660/23384 [00:08<00:00, 2727.33it/s] 94%|█████████▍| 21941/23384 [00:08<00:00, 2748.61it/s] 95%|█████████▌| 22227/23384 [00:08<00:00, 2781.16it/s] 96%|█████████▋| 22512/23384 [00:08<00:00, 2799.25it/s] 97%|█████████▋| 22798/23384 [00:08<00:00, 2814.09it/s] 99%|█████████▊| 23080/23384 [00:08<00:00, 2813.31it/s]100%|█████████▉| 23362/23384 [00:08<00:00, 2785.77it/s]100%|██████████| 23384/23384 [00:08<00:00, 2687.23it/s]
+Completing loading t2m dataset
+Calculating dataset hash:   0%|          | 0/24546 [00:00<?, ?it/s]Calculating dataset hash:   5%|▌         | 1297/24546 [00:00<00:01, 12966.33it/s]Calculating dataset hash:  11%|█         | 2594/24546 [00:00<00:01, 12074.83it/s]Calculating dataset hash:  16%|█▌        | 3806/24546 [00:00<00:01, 11384.93it/s]Calculating dataset hash:  20%|██        | 4949/24546 [00:00<00:01, 10831.14it/s]Calculating dataset hash:  25%|██▍       | 6036/24546 [00:00<00:01, 10291.66it/s]Calculating dataset hash:  29%|██▉       | 7069/24546 [00:00<00:01, 9839.04it/s] Calculating dataset hash:  33%|███▎      | 8056/24546 [00:00<00:01, 9529.08it/s]Calculating dataset hash:  37%|███▋      | 9011/24546 [00:00<00:01, 9131.90it/s]Calculating dataset hash:  40%|████      | 9926/24546 [00:01<00:01, 8678.83it/s]Calculating dataset hash:  44%|████▍     | 10797/24546 [00:01<00:01, 8194.78it/s]Calculating dataset hash:  47%|████▋     | 11620/24546 [00:01<00:01, 7923.49it/s]Calculating dataset hash:  51%|█████     | 12414/24546 [00:01<00:01, 7699.07it/s]Calculating dataset hash:  54%|█████▎    | 13185/24546 [00:01<00:01, 7440.95it/s]Calculating dataset hash:  57%|█████▋    | 13930/24546 [00:01<00:01, 7185.89it/s]Calculating dataset hash:  60%|█████▉    | 14649/24546 [00:01<00:01, 6930.05it/s]Calculating dataset hash:  63%|██████▎   | 15342/24546 [00:01<00:01, 6712.76it/s]Calculating dataset hash:  65%|██████▌   | 16013/24546 [00:01<00:01, 6524.55it/s]Calculating dataset hash:  68%|██████▊   | 16665/24546 [00:02<00:01, 5841.21it/s]Calculating dataset hash:  71%|███████   | 17347/24546 [00:02<00:01, 6096.49it/s]Calculating dataset hash:  73%|███████▎  | 18029/24546 [00:02<00:01, 6291.11it/s]Calculating dataset hash:  76%|███████▌  | 18708/24546 [00:02<00:00, 6428.20it/s]Calculating dataset hash:  79%|███████▉  | 19392/24546 [00:02<00:00, 6545.47it/s]Calculating dataset hash:  82%|████████▏ | 20079/24546 [00:02<00:00, 6637.85it/s]Calculating dataset hash:  85%|████████▍ | 20764/24546 [00:02<00:00, 6697.00it/s]Calculating dataset hash:  87%|████████▋ | 21444/24546 [00:02<00:00, 6725.54it/s]Calculating dataset hash:  90%|█████████ | 22119/24546 [00:02<00:00, 6729.42it/s]Calculating dataset hash:  93%|█████████▎| 22794/24546 [00:02<00:00, 6716.61it/s]Calculating dataset hash:  96%|█████████▌| 23467/24546 [00:03<00:00, 6709.18it/s]Calculating dataset hash:  98%|█████████▊| 24139/24546 [00:03<00:00, 6614.69it/s]Calculating dataset hash: 100%|██████████| 24546/24546 [00:03<00:00, 7587.84it/s]
+[Cache]  读取已有缓存: ./text_cache/t2m/train/t5/raw_embeds.pt
+
+Initializing model ...
+Namespace(name='t2m', dataset_name='t2m', feat_bias=5, checkpoints_dir='./checkpoints', log_every=500, save_interval=5000, num_layers=8, latent_dim=512, text_latent_dim=256, time_dim=512, base_dim=512, dim_mults=[2, 2, 2, 2], no_eff=False, no_adagn=False, diffusion_steps=1000, prediction_type='sample', text_encoder_type='t5', abstractor=True, disable_sta=False, laten_size=77, dropout=0.1, seed=0, num_train_steps=200000, lr=0.0001, decay_rate=0.9, update_lr_steps=5000, cond_mask_prob=0.1, clip_grad_norm=1, weight_decay=0.01, batch_size=64, beta_schedule='linear', enable_trace=False, use_text_cache=True, is_continue=False, continue_ckpt='latest.tar', opt_path='', which_ckpt='latest_120000', evaluator_dir='./data/pretrained_models', eval_meta_dir='./data', glove_dir='./data/glove', num_inference_steps=10, diffuser_name='dpmsolver', no_ema=False, no_fp16=False, enable_cfg_scheduler=False, cfg_scheduler_type='none', replication_times=20, batch_size_eval=32, diversity_times=300, mm_num_samples=100, mm_num_repeats=30, mm_num_times=10, evl_mode='fid', cfg_scale=2.5, model_ema=False, model_ema_steps=32, model_ema_decay=0.9999, unit_length=4, max_text_len=20, text_enc_mod='bigru', estimator_mod='bigru', dim_text_hidden=512, dim_att_vec=512, dim_z=128, dim_movement_enc_hidden=512, dim_movement_dec_hidden=512, dim_movement_latent=512, dim_word=300, dim_pos_ohot=15, dim_motion_hidden=1024, dim_coemb_hidden=512, joints_num=22, dim_pose=263, max_motion_length=196, radius=4, fps=20, device=device(type='cuda'), is_train=True, save_root='./checkpoints/t2m/t2m', model_dir='./checkpoints/t2m/t2m/model', meta_dir='./checkpoints/t2m/t2m/meta')
+Creating UNet with text encoder: 't5'
+Loading T5 model from: ./T5
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 24.61it/s]
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+wandb: Currently logged in as: ccs_covenant (ccs_covenant-hong-kong-university-of-science-and-technology) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.21.0
+wandb: Run data is saved locally in /data/kuimou/openANT/wandb/run-20250722_082855-9t14c75x
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run t2m_20250722-08_5e6590
+wandb: ⭐️ View project at https://wandb.ai/ccs_covenant-hong-kong-university-of-science-and-technology/t2m
+wandb: 🚀 View run at https://wandb.ai/ccs_covenant-hong-kong-university-of-science-and-technology/t2m/runs/9t14c75x
+Building STA connector.
+[CondUnet1D] Dims: [263, 1024, 1024, 1024, 1024], Multipliers: [2, 2, 2, 2]
+T2M-Unet model created successfully.
+Finish building Model.
+
+Diffusion_config:
+ FrozenDict([('num_train_timesteps', 1000), ('beta_start', 0.0001), ('beta_end', 0.02), ('beta_schedule', 'linear'), ('trained_betas', None), ('variance_type', 'fixed_small'), ('clip_sample', False), ('prediction_type', 'sample'), ('thresholding', False), ('dynamic_thresholding_ratio', 0.995), ('clip_sample_range', 1.0), ('sample_max_value', 1.0), ('timestep_spacing', 'leading'), ('steps_offset', 0), ('rescale_betas_zero_snr', False), ('_use_default_values', ['sample_max_value', 'steps_offset', 'thresholding', 'trained_betas', 'timestep_spacing', 'beta_start', 'beta_end', 'rescale_betas_zero_snr', 'clip_sample_range', 'dynamic_thresholding_ratio'])])
+Start experiment: 2025-07-22_08:28:57
+Setting up evaluation components...
+
+Loading Evaluation Model Wrapper (Epoch 28) Completed!!
+
+ Loading gt_eval mode HumanML3D dataset ...
+./data/t2m_std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 33%|███▎      | 485/1460 [00:00<00:00, 4843.31it/s] 67%|██████▋   | 978/1460 [00:00<00:00, 4892.41it/s]100%|██████████| 1460/1460 [00:00<00:00, 4759.90it/s]
+Completing loading t2m dataset
+Calculating dataset hash:   0%|          | 0/1530 [00:00<?, ?it/s]Calculating dataset hash:  31%|███       | 473/1530 [00:00<00:00, 4727.56it/s]Calculating dataset hash:  62%|██████▏   | 946/1530 [00:00<00:00, 4348.38it/s]Calculating dataset hash:  90%|█████████ | 1383/1530 [00:00<00:00, 4146.47it/s]Calculating dataset hash: 100%|██████████| 1530/1530 [00:00<00:00, 4189.75it/s]
+[Cache]  读取已有缓存: ./text_cache/t2m/val/t5/raw_embeds.pt
+
+ Loading eval mode HumanML3D dataset ...
+./checkpoints/t2m/t2m/meta/std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 23%|██▎       | 335/1460 [00:00<00:00, 3344.44it/s] 46%|████▌     | 670/1460 [00:00<00:00, 3320.88it/s] 69%|██████▊   | 1003/1460 [00:00<00:00, 3314.38it/s] 91%|█████████▏| 1335/1460 [00:00<00:00, 3312.27it/s]100%|██████████| 1460/1460 [00:00<00:00, 3318.62it/s]
+Completing loading t2m dataset
+Evaluation components are ready.
+Need to train for 523 epochs....
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/kuimou/openANT/scripts/train.py", line 73, in <module>
+    trainer.train(train_datasetloader)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 291, in train
+    log_dict = self.update()
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 132, in update
+    self.accelerator.backward(self.loss)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/accelerator.py", line 2578, in backward
+    loss.backward(**kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/kuimou/openANT/scripts/train.py", line 73, in <module>
+    trainer.train(train_datasetloader)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 291, in train
+    log_dict = self.update()
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 132, in update
+    self.accelerator.backward(self.loss)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/accelerator.py", line 2578, in backward
+    loss.backward(**kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/_tensor.py", line 648, in backward
+    torch.autograd.backward(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/autograd/__init__.py", line 353, in backward
+    _engine_run_backward(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/autograd/graph.py", line 824, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1959, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1917, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1199, in launch_command
+    simple_launcher(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 782, in simple_launcher
+    process.wait()
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1222, in wait
+    self._wait(timeout=sigint_timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1953, in _wait
+    time.sleep(delay)
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _MultiProcessingDataLoaderIter._clean_up_worker at 0x7f1afe9bef80>
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1657, in _clean_up_worker
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt: 
+Exception ignored in atexit callback: <function _MultiProcessingDataLoaderIter._clean_up_worker at 0x7f1afe9bef80>
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1657, in _clean_up_worker
+    w.join(timeout=_utils.MP_STATUS_CHECK_INTERVAL)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt: 
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mt2m_20250722-08_5e6590[0m at: [34mhttps://wandb.ai/ccs_covenant-hong-kong-university-of-science-and-technology/t2m/runs/9t14c75x[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250722_082855-9t14c75x/logs[0m

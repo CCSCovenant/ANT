@@ -1,0 +1,1 @@
+accelerate launch --config_file 2gpu.yaml --gpu_ids 6,7 -m scripts.train --abstractor 

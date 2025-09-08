@@ -1,0 +1,225 @@
+------------ Options -------------
+abstractor: True
+base_dim: 512
+batch_size: 64
+batch_size_eval: 32
+beta_schedule: linear
+cfg_scale: 2.5
+cfg_scheduler_type: none
+checkpoints_dir: ./checkpoints
+clip_grad_norm: 1
+cond_mask_prob: 0.1
+continue_ckpt: latest.tar
+dataset_name: t2m
+decay_rate: 0.9
+diffuser_name: dpmsolver
+diffusion_steps: 1000
+dim_mults: [2, 2, 2, 2]
+disable_sta: False
+diversity_times: 300
+dropout: 0.1
+enable_cfg_scheduler: False
+enable_trace: False
+eval_meta_dir: ./data
+evaluator_dir: ./data/pretrained_models
+evl_mode: fid
+feat_bias: 5
+glove_dir: ./data/glove
+is_continue: False
+laten_size: 77
+latent_dim: 512
+log_every: 500
+lr: 0.0001
+mm_num_repeats: 30
+mm_num_samples: 100
+mm_num_times: 10
+model_ema: False
+model_ema_decay: 0.9999
+model_ema_steps: 32
+name: t2m
+no_adagn: False
+no_eff: False
+no_ema: False
+no_fp16: False
+num_inference_steps: 10
+num_layers: 8
+num_train_steps: 200000
+opt_path: 
+prediction_type: sample
+replication_times: 20
+save_interval: 5000
+seed: 0
+text_encoder_type: t5
+text_latent_dim: 256
+time_dim: 512
+update_lr_steps: 5000
+weight_decay: 0.01
+which_ckpt: latest_120000
+-------------- End ----------------
+
+ Loading train mode HumanML3D train dataset ...
+  0%|          | 0/23384 [00:00<?, ?it/s]  2%|▏         | 362/23384 [00:00<00:06, 3619.23it/s]  3%|▎         | 743/23384 [00:00<00:06, 3728.05it/s]  5%|▍         | 1140/23384 [00:00<00:05, 3836.79it/s]  7%|▋         | 1524/23384 [00:00<00:05, 3832.78it/s]  8%|▊         | 1908/23384 [00:00<00:05, 3781.94it/s] 10%|▉         | 2301/23384 [00:00<00:05, 3831.44it/s] 12%|█▏        | 2708/23384 [00:00<00:05, 3905.60it/s] 13%|█▎        | 3103/23384 [00:00<00:05, 3919.02it/s] 15%|█▍        | 3507/23384 [00:00<00:05, 3955.10it/s] 17%|█▋        | 3908/23384 [00:01<00:04, 3969.87it/s] 18%|█▊        | 4306/23384 [00:01<00:04, 3855.35it/s] 20%|██        | 4693/23384 [00:01<00:04, 3816.58it/s] 22%|██▏       | 5076/23384 [00:01<00:04, 3815.95it/s] 23%|██▎       | 5458/23384 [00:01<00:04, 3789.74it/s] 25%|██▍       | 5838/23384 [00:01<00:04, 3780.66it/s] 27%|██▋       | 6217/23384 [00:01<00:04, 3781.01it/s] 28%|██▊       | 6605/23384 [00:01<00:04, 3808.71it/s] 30%|██▉       | 7011/23384 [00:01<00:04, 3882.09it/s] 32%|███▏      | 7400/23384 [00:01<00:04, 3883.62it/s] 33%|███▎      | 7790/23384 [00:02<00:04, 3886.64it/s] 35%|███▍      | 8180/23384 [00:02<00:03, 3889.43it/s] 37%|███▋      | 8576/23384 [00:02<00:03, 3910.35it/s] 38%|███▊      | 8968/23384 [00:02<00:05, 2525.27it/s] 40%|███▉      | 9347/23384 [00:02<00:05, 2798.77it/s] 42%|████▏     | 9736/23384 [00:02<00:04, 3054.41it/s] 43%|████▎     | 10125/23384 [00:02<00:04, 3262.95it/s] 45%|████▍     | 10518/23384 [00:02<00:03, 3438.58it/s] 47%|████▋     | 10889/23384 [00:03<00:03, 3509.49it/s] 48%|████▊     | 11281/23384 [00:03<00:03, 3623.12it/s] 50%|████▉     | 11675/23384 [00:03<00:03, 3711.26it/s] 52%|█████▏    | 12087/23384 [00:03<00:02, 3828.39it/s] 53%|█████▎    | 12482/23384 [00:03<00:02, 3860.52it/s] 55%|█████▌    | 12874/23384 [00:03<00:02, 3840.01it/s] 57%|█████▋    | 13262/23384 [00:03<00:02, 3811.56it/s] 58%|█████▊    | 13668/23384 [00:03<00:02, 3882.31it/s] 60%|██████    | 14065/23384 [00:03<00:02, 3908.01it/s] 62%|██████▏   | 14475/23384 [00:03<00:02, 3964.41it/s] 64%|██████▎   | 14873/23384 [00:04<00:02, 3965.42it/s] 65%|██████▌   | 15281/23384 [00:04<00:02, 3997.52it/s] 67%|██████▋   | 15701/23384 [00:04<00:01, 4056.02it/s] 69%|██████▉   | 16110/23384 [00:04<00:01, 4064.59it/s] 71%|███████   | 16517/23384 [00:04<00:01, 4058.53it/s] 72%|███████▏  | 16924/23384 [00:04<00:01, 3984.12it/s] 74%|███████▍  | 17327/23384 [00:04<00:01, 3995.75it/s] 76%|███████▌  | 17731/23384 [00:04<00:01, 4008.66it/s] 78%|███████▊  | 18136/23384 [00:04<00:01, 4018.48it/s] 79%|███████▉  | 18557/23384 [00:04<00:01, 4074.06it/s] 81%|████████  | 18969/23384 [00:05<00:01, 4087.08it/s] 83%|████████▎ | 19378/23384 [00:05<00:00, 4084.73it/s] 85%|████████▍ | 19792/23384 [00:05<00:00, 4100.88it/s] 86%|████████▋ | 20203/23384 [00:05<00:00, 4075.28it/s] 88%|████████▊ | 20625/23384 [00:05<00:00, 4118.34it/s] 90%|████████▉ | 21037/23384 [00:05<00:00, 4068.44it/s] 92%|█████████▏| 21445/23384 [00:05<00:00, 4054.15it/s] 93%|█████████▎| 21859/23384 [00:05<00:00, 4078.29it/s] 95%|█████████▌| 22267/23384 [00:05<00:00, 4060.03it/s] 97%|█████████▋| 22674/23384 [00:05<00:00, 4062.73it/s] 99%|█████████▊| 23084/23384 [00:06<00:00, 4071.48it/s]100%|██████████| 23384/23384 [00:06<00:00, 3826.98it/s]
+Completing loading t2m dataset
+
+Initializing model ...
+Namespace(name='t2m', dataset_name='t2m', feat_bias=5, checkpoints_dir='./checkpoints', log_every=500, save_interval=5000, num_layers=8, latent_dim=512, text_latent_dim=256, time_dim=512, base_dim=512, dim_mults=[2, 2, 2, 2], no_eff=False, no_adagn=False, diffusion_steps=1000, prediction_type='sample', text_encoder_type='t5', abstractor=True, disable_sta=False, laten_size=77, dropout=0.1, seed=0, num_train_steps=200000, lr=0.0001, decay_rate=0.9, update_lr_steps=5000, cond_mask_prob=0.1, clip_grad_norm=1, weight_decay=0.01, batch_size=64, beta_schedule='linear', enable_trace=False, is_continue=False, continue_ckpt='latest.tar', opt_path='', which_ckpt='latest_120000', evaluator_dir='./data/pretrained_models', eval_meta_dir='./data', glove_dir='./data/glove', num_inference_steps=10, diffuser_name='dpmsolver', no_ema=False, no_fp16=False, enable_cfg_scheduler=False, cfg_scheduler_type='none', replication_times=20, batch_size_eval=32, diversity_times=300, mm_num_samples=100, mm_num_repeats=30, mm_num_times=10, evl_mode='fid', cfg_scale=2.5, model_ema=False, model_ema_steps=32, model_ema_decay=0.9999, unit_length=4, max_text_len=20, text_enc_mod='bigru', estimator_mod='bigru', dim_text_hidden=512, dim_att_vec=512, dim_z=128, dim_movement_enc_hidden=512, dim_movement_dec_hidden=512, dim_movement_latent=512, dim_word=300, dim_pos_ohot=15, dim_motion_hidden=1024, dim_coemb_hidden=512, joints_num=22, dim_pose=263, max_motion_length=196, radius=4, fps=20, device=device(type='cuda'), is_train=True, save_root='./checkpoints/t2m/t2m', model_dir='./checkpoints/t2m/t2m/model', meta_dir='./checkpoints/t2m/t2m/meta')
+Creating UNet with text encoder: 't5'
+Loading T5 model from: ./T5
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 32.90it/s]
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+wandb: Currently logged in as: ccs_covenant (ccs_covenant-hong-kong-university-of-science-and-technology) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.21.0
+wandb: Run data is saved locally in /data/kuimou/openANT/wandb/run-20250722_035544-3sq8kz20
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run t2m_20250722-03_c54f44
+wandb: ⭐️ View project at https://wandb.ai/ccs_covenant-hong-kong-university-of-science-and-technology/t2m
+wandb: 🚀 View run at https://wandb.ai/ccs_covenant-hong-kong-university-of-science-and-technology/t2m/runs/3sq8kz20
+Building STA connector.
+[CondUnet1D] Dims: [263, 1024, 1024, 1024, 1024], Multipliers: [2, 2, 2, 2]
+T2M-Unet model created successfully.
+Finish building Model.
+
+Diffusion_config:
+ FrozenDict([('num_train_timesteps', 1000), ('beta_start', 0.0001), ('beta_end', 0.02), ('beta_schedule', 'linear'), ('trained_betas', None), ('variance_type', 'fixed_small'), ('clip_sample', False), ('prediction_type', 'sample'), ('thresholding', False), ('dynamic_thresholding_ratio', 0.995), ('clip_sample_range', 1.0), ('sample_max_value', 1.0), ('timestep_spacing', 'leading'), ('steps_offset', 0), ('rescale_betas_zero_snr', False), ('_use_default_values', ['sample_max_value', 'steps_offset', 'trained_betas', 'beta_start', 'clip_sample_range', 'beta_end', 'thresholding', 'timestep_spacing', 'dynamic_thresholding_ratio', 'rescale_betas_zero_snr'])])
+Start experiment: 2025-07-22_03:55:45
+Setting up evaluation components...
+
+Loading Evaluation Model Wrapper (Epoch 28) Completed!!
+
+ Loading gt_eval mode HumanML3D dataset ...
+./data/t2m_std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 38%|███▊      | 553/1460 [00:00<00:00, 5520.67it/s] 78%|███████▊  | 1140/1460 [00:00<00:00, 5724.79it/s]100%|██████████| 1460/1460 [00:00<00:00, 5742.91it/s]
+Completing loading t2m dataset
+
+ Loading eval mode HumanML3D dataset ...
+./checkpoints/t2m/t2m/meta/std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 37%|███▋      | 539/1460 [00:00<00:00, 5386.52it/s] 74%|███████▍  | 1078/1460 [00:00<00:00, 4687.88it/s]100%|██████████| 1460/1460 [00:00<00:00, 4565.62it/s]
+Completing loading t2m dataset
+Evaluation components are ready.
+Need to train for 523 epochs....
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/kuimou/openANT/scripts/train.py", line 73, in <module>
+    trainer.train(train_datasetloader)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 265, in train
+    self.forward(batch_data)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 92, in forward
+    self.prediction = self.model(x_t, t, text=caption)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/t2m_unet.py", line 138, in forward
+    output_padded = self.unet(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/unet_1d.py", line 71, in forward
+    x = block1(x, temb, cond, cond_indices)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/cond_conv_block.py", line 43, in forward
+    x = self.cross_attn(x, cond, cond_indices, return_weights=False)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/attention.py", line 137, in forward
+    attn_output, weights = self.cross_attention(x_cond, cond, return_weights=True)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/attention.py", line 81, in forward
+    query = self.query(self.norm(input_tensor))
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/fx/traceback.py", line 183, in format_stack
+    @compatibility(is_backward_compatible=False)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/kuimou/openANT/scripts/train.py", line 73, in <module>
+    trainer.train(train_datasetloader)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 265, in train
+    self.forward(batch_data)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 92, in forward
+    self.prediction = self.model(x_t, t, text=caption)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/t2m_unet.py", line 138, in forward
+    output_padded = self.unet(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/unet_1d.py", line 71, in forward
+    x = block1(x, temb, cond, cond_indices)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/cond_conv_block.py", line 43, in forward
+    x = self.cross_attn(x, cond, cond_indices, return_weights=False)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/attention.py", line 137, in forward
+    attn_output, weights = self.cross_attention(x_cond, cond, return_weights=True)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/openANT/models/submodules/attention.py", line 81, in forward
+    query = self.query(self.norm(input_tensor))
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/fx/traceback.py", line 183, in format_stack
+    @compatibility(is_backward_compatible=False)
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7f42beb0b370>
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/wandb/sdk/lib/service/service_connection.py", line 54, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/wandb/sdk/lib/service/service_connection.py", line 198, in teardown
+    return self._proc.join()
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/wandb/sdk/lib/service/service_process.py", line 57, in join
+    return self._process.wait()
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1959, in _wait
+    (pid, sts) = self._try_wait(0)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/subprocess.py", line 1917, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+KeyboardInterrupt: 
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1184, in launch_command
+    deepspeed_launcher(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 829, in deepspeed_launcher
+    raise ImportError("DeepSpeed is not installed => run `pip3 install deepspeed` or build it from source.")
+ImportError: DeepSpeed is not installed => run `pip3 install deepspeed` or build it from source.

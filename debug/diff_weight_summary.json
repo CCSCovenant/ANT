@@ -1,0 +1,14 @@
+{
+  "old_ckpt": "/data/kuimou/backup/checkpoints/t2m/t2m_t5/model/latest_120000.tar",
+  "new_ckpt": "/data/kuimou/openANT/checkpoints/t2m/ant_t2m/model/latest_120000.tar",
+  "old_raw_keys": 2719,
+  "new_raw_keys": 1825,
+  "old_norm_keys": 2719,
+  "new_norm_keys": 1825,
+  "only_old": 1079,
+  "only_new": 185,
+  "shared": 1640,
+  "shared_same": 810,
+  "shared_diff_shape": 1,
+  "shared_diff_value": 829
+}

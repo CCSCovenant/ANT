@@ -1,0 +1,1 @@
+accelerate launch --config_file 1gpu.yaml --gpu_ids 0 -m scripts.train.train --abstractor --use_text_cache --num_train_steps 150000 --name ant_t2m

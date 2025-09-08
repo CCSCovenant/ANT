@@ -1,0 +1,9 @@
+{
+  "t5": "./T5",
+  "bert": "N/A handle in BERT class", 
+  "longclip": "N/A hanlde in moclip class",
+  "moclip": "N/A",
+  "clip": {
+    "version": "ViT-B/32"
+  }
+}

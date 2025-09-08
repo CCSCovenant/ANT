@@ -1,0 +1,142 @@
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+------------ Options -------------
+abstractor: True
+base_dim: 512
+batch_size: 64
+batch_size_eval: 32
+beta_schedule: linear
+cfg_scale: 2.5
+cfg_scheduler_type: none
+checkpoints_dir: ./checkpoints
+clip_grad_norm: 1
+cond_mask_prob: 0.1
+continue_ckpt: latest.tar
+dataset_name: t2m
+decay_rate: 0.9
+diffuser_name: dpmsolver
+diffusion_steps: 1000
+dim_mults: [2, 2, 2, 2]
+disable_sta: False
+diversity_times: 300
+dropout: 0.1
+enable_cfg_scheduler: False
+enable_trace: False
+eval_meta_dir: ./data
+evaluator_dir: ./data/pretrained_models
+evl_mode: fid
+feat_bias: 5
+glove_dir: ./data/glove
+is_continue: False
+laten_size: 77
+latent_dim: 512
+log_every: 500
+lr: 0.0001
+mm_num_repeats: 30
+mm_num_samples: 100
+mm_num_times: 10
+model_ema: False
+model_ema_decay: 0.9999
+model_ema_steps: 32
+name: ant_t2m_test
+no_adagn: False
+no_eff: False
+no_ema: False
+no_fp16: False
+num_inference_steps: 10
+num_layers: 8
+num_train_steps: 150000
+opt_path: 
+prediction_type: sample
+replication_times: 20
+save_interval: 5000
+seed: 0
+text_encoder_type: t5
+text_latent_dim: 256
+time_dim: 512
+update_lr_steps: 5000
+use_text_cache: True
+weight_decay: 0.01
+which_ckpt: latest_120000
+-------------- End ----------------
+
+ Loading train mode HumanML3D train dataset ...
+  0%|          | 0/23384 [00:00<?, ?it/s]  0%|          | 8/23384 [00:00<06:08, 63.39it/s]  0%|          | 24/23384 [00:00<03:38, 107.06it/s]  0%|          | 56/23384 [00:00<02:04, 187.13it/s]  0%|          | 76/23384 [00:00<02:10, 178.11it/s]  0%|          | 95/23384 [00:00<02:48, 138.18it/s]  0%|          | 111/23384 [00:00<03:06, 124.78it/s]  1%|          | 125/23384 [00:00<03:17, 117.99it/s]  1%|          | 190/23384 [00:01<01:38, 235.60it/s]  1%|          | 216/23384 [00:01<02:29, 154.55it/s]  1%|          | 237/23384 [00:01<02:47, 138.14it/s]  1%|          | 255/23384 [00:01<02:43, 141.07it/s]  1%|          | 274/23384 [00:01<02:38, 145.81it/s]  1%|▏         | 297/23384 [00:01<02:24, 159.79it/s]  1%|▏         | 317/23384 [00:02<02:18, 167.05it/s]  1%|▏         | 336/23384 [00:02<02:37, 145.96it/s]  2%|▏         | 372/23384 [00:02<01:58, 194.25it/s]  2%|▏         | 394/23384 [00:02<02:01, 189.81it/s]  2%|▏         | 415/23384 [00:02<02:16, 168.71it/s]  2%|▏         | 434/23384 [00:02<02:52, 133.39it/s]  2%|▏         | 460/23384 [00:02<02:23, 159.32it/s]  2%|▏         | 480/23384 [00:03<02:18, 165.80it/s]  2%|▏         | 499/23384 [00:03<02:24, 158.10it/s]  2%|▏         | 517/23384 [00:03<02:27, 154.79it/s]  2%|▏         | 540/23384 [00:03<02:17, 165.96it/s]  2%|▏         | 559/23384 [00:03<02:15, 168.80it/s]  2%|▏         | 577/23384 [00:03<03:06, 122.11it/s]  3%|▎         | 592/23384 [00:03<03:28, 109.16it/s]  3%|▎         | 620/23384 [00:04<02:40, 141.43it/s]  3%|▎         | 637/23384 [00:04<02:48, 134.77it/s]  3%|▎         | 675/23384 [00:04<02:02, 185.33it/s]  3%|▎         | 696/23384 [00:04<02:16, 165.97it/s]  3%|▎         | 715/23384 [00:04<02:24, 156.41it/s]  3%|▎         | 732/23384 [00:04<02:42, 139.43it/s]  3%|▎         | 747/23384 [00:04<02:58, 126.65it/s]  3%|▎         | 769/23384 [00:05<02:38, 142.27it/s]  3%|▎         | 785/23384 [00:05<02:56, 127.92it/s]  3%|▎         | 799/23384 [00:05<03:10, 118.75it/s]  3%|▎         | 812/23384 [00:05<03:24, 110.55it/s]  4%|▎         | 824/23384 [00:05<03:49, 98.18it/s]   4%|▎         | 835/23384 [00:05<03:52, 96.82it/s]  4%|▎         | 849/23384 [00:05<03:33, 105.49it/s]  4%|▎         | 866/23384 [00:06<03:06, 120.63it/s]  4%|▍         | 889/23384 [00:06<02:38, 141.74it/s]  4%|▍         | 906/23384 [00:06<02:35, 144.48it/s]  4%|▍         | 921/23384 [00:06<03:04, 121.62it/s]  4%|▍         | 938/23384 [00:06<02:50, 131.69it/s]  4%|▍         | 952/23384 [00:06<02:52, 129.75it/s]  4%|▍         | 966/23384 [00:06<03:02, 122.98it/s]  4%|▍         | 979/23384 [00:06<03:14, 115.27it/s]  4%|▍         | 1007/23384 [00:07<02:30, 149.12it/s]  4%|▍         | 1023/23384 [00:07<02:34, 144.76it/s]  4%|▍         | 1045/23384 [00:07<02:20, 158.70it/s]  5%|▍         | 1065/23384 [00:07<02:18, 161.21it/s]  5%|▍         | 1082/23384 [00:07<02:24, 154.50it/s]  5%|▍         | 1098/23384 [00:07<02:53, 128.64it/s]  5%|▍         | 1112/23384 [00:07<03:37, 102.36it/s]  5%|▍         | 1127/23384 [00:08<03:18, 111.94it/s]  5%|▍         | 1140/23384 [00:08<03:24, 108.71it/s]  5%|▍         | 1152/23384 [00:08<03:43, 99.50it/s]   5%|▍         | 1163/23384 [00:08<03:59, 92.74it/s]  5%|▌         | 1173/23384 [00:08<03:55, 94.24it/s]  5%|▌         | 1197/23384 [00:08<02:58, 124.41it/s]  5%|▌         | 1210/23384 [00:08<03:34, 103.15it/s]  5%|▌         | 1223/23384 [00:08<03:35, 102.64it/s]  5%|▌         | 1234/23384 [00:09<03:38, 101.55it/s]  5%|▌         | 1245/23384 [00:09<03:39, 100.93it/s]  5%|▌         | 1256/23384 [00:09<03:42, 99.39it/s]   5%|▌         | 1267/23384 [00:09<03:41, 99.69it/s]  6%|▌         | 1302/23384 [00:09<02:18, 159.81it/s]  6%|▌         | 1319/23384 [00:09<02:32, 144.55it/s]  6%|▌         | 1335/23384 [00:09<02:32, 144.83it/s]  6%|▌         | 1350/23384 [00:09<02:36, 140.36it/s]  6%|▌         | 1387/23384 [00:10<01:50, 198.40it/s]  6%|▌         | 1408/23384 [00:10<01:50, 199.05it/s]  6%|▌         | 1429/23384 [00:10<02:08, 171.49it/s]  6%|▌         | 1448/23384 [00:10<02:39, 137.22it/s]  6%|▋         | 1464/23384 [00:10<02:35, 141.31it/s]  6%|▋         | 1480/23384 [00:10<02:55, 124.62it/s]  6%|▋         | 1494/23384 [00:10<02:57, 123.13it/s]  6%|▋         | 1514/23384 [00:10<02:34, 141.13it/s]  7%|▋         | 1569/23384 [00:11<01:29, 243.56it/s]  7%|▋         | 1635/23384 [00:11<01:01, 353.30it/s]  7%|▋         | 1674/23384 [00:11<01:26, 252.22it/s]  7%|▋         | 1706/23384 [00:11<01:54, 189.32it/s]  7%|▋         | 1732/23384 [00:11<02:08, 167.96it/s]  8%|▊         | 1754/23384 [00:12<02:07, 169.17it/s]  8%|▊         | 1775/23384 [00:12<02:02, 176.70it/s]  8%|▊         | 1796/23384 [00:12<02:28, 145.75it/s]  8%|▊         | 1821/23384 [00:12<02:13, 161.93it/s]  8%|▊         | 1840/23384 [00:12<02:26, 147.07it/s]  8%|▊         | 1857/23384 [00:12<02:23, 150.27it/s]  8%|▊         | 1874/23384 [00:12<02:22, 150.53it/s]  8%|▊         | 1893/23384 [00:13<02:14, 160.06it/s]  8%|▊         | 1918/23384 [00:13<02:00, 177.64it/s]  8%|▊         | 1937/23384 [00:13<02:15, 158.86it/s]  8%|▊         | 1954/23384 [00:13<02:22, 150.52it/s]  8%|▊         | 1970/23384 [00:13<02:36, 136.43it/s]  8%|▊         | 1985/23384 [00:13<02:39, 134.32it/s]  9%|▊         | 1999/23384 [00:13<02:42, 131.26it/s]  9%|▊         | 2013/23384 [00:13<03:16, 109.03it/s]  9%|▊         | 2025/23384 [00:14<03:52, 91.97it/s]   9%|▊         | 2035/23384 [00:14<03:49, 93.10it/s]  9%|▉         | 2050/23384 [00:14<03:26, 103.51it/s]  9%|▉         | 2072/23384 [00:14<02:47, 126.98it/s]  9%|▉         | 2086/23384 [00:14<03:29, 101.47it/s]  9%|▉         | 2098/23384 [00:14<03:36, 98.48it/s]   9%|▉         | 2109/23384 [00:14<03:30, 101.06it/s]  9%|▉         | 2120/23384 [00:15<03:32, 100.21it/s]  9%|▉         | 2131/23384 [00:15<03:41, 96.04it/s]   9%|▉         | 2141/23384 [00:15<04:05, 86.62it/s]  9%|▉         | 2150/23384 [00:15<04:31, 78.13it/s]  9%|▉         | 2160/23384 [00:15<04:27, 79.21it/s]  9%|▉         | 2169/23384 [00:15<04:24, 80.17it/s]  9%|▉         | 2181/23384 [00:15<04:04, 86.81it/s]  9%|▉         | 2198/23384 [00:15<03:22, 104.58it/s] 10%|▉         | 2249/23384 [00:16<01:40, 210.51it/s] 10%|▉         | 2276/23384 [00:16<01:36, 218.08it/s] 10%|▉         | 2299/23384 [00:16<01:39, 212.24it/s] 10%|▉         | 2321/23384 [00:16<01:41, 207.30it/s] 10%|█         | 2350/23384 [00:16<01:34, 221.87it/s] 10%|█         | 2373/23384 [00:16<01:33, 224.08it/s] 11%|█         | 2576/23384 [00:16<00:28, 730.62it/s] 12%|█▏        | 2790/23384 [00:16<00:18, 1133.23it/s] 13%|█▎        | 3000/23384 [00:16<00:14, 1412.19it/s] 14%|█▎        | 3211/23384 [00:16<00:12, 1615.47it/s] 15%|█▍        | 3424/23384 [00:17<00:11, 1764.67it/s] 16%|█▌        | 3635/23384 [00:17<00:10, 1865.64it/s] 16%|█▋        | 3855/23384 [00:17<00:09, 1961.83it/s] 17%|█▋        | 4075/23384 [00:17<00:09, 2032.42it/s] 18%|█▊        | 4285/23384 [00:17<00:09, 2050.87it/s] 19%|█▉        | 4500/23384 [00:17<00:09, 2078.43it/s] 20%|██        | 4709/23384 [00:17<00:09, 2070.23it/s] 21%|██        | 4923/23384 [00:17<00:08, 2087.56it/s] 22%|██▏       | 5133/23384 [00:17<00:08, 2088.63it/s] 23%|██▎       | 5343/23384 [00:17<00:08, 2080.26it/s] 24%|██▍       | 5558/23384 [00:18<00:08, 2100.83it/s] 25%|██▍       | 5769/23384 [00:18<00:08, 2061.06it/s] 26%|██▌       | 5977/23384 [00:18<00:08, 2063.15it/s] 26%|██▋       | 6188/23384 [00:18<00:08, 2067.73it/s] 27%|██▋       | 6401/23384 [00:18<00:08, 2085.54it/s] 28%|██▊       | 6610/23384 [00:18<00:08, 2081.71it/s] 29%|██▉       | 6824/23384 [00:18<00:07, 2097.38it/s] 30%|███       | 7044/23384 [00:18<00:07, 2127.20it/s] 31%|███       | 7258/23384 [00:18<00:07, 2130.39it/s] 32%|███▏      | 7472/23384 [00:19<00:07, 2106.99it/s] 33%|███▎      | 7683/23384 [00:19<00:07, 2106.63it/s] 34%|███▍      | 7894/23384 [00:19<00:13, 1157.42it/s] 35%|███▍      | 8099/23384 [00:19<00:11, 1324.95it/s] 36%|███▌      | 8304/23384 [00:19<00:10, 1478.97it/s] 36%|███▋      | 8518/23384 [00:19<00:09, 1632.85it/s] 37%|███▋      | 8734/23384 [00:19<00:08, 1762.33it/s] 38%|███▊      | 8944/23384 [00:19<00:07, 1850.44it/s] 39%|███▉      | 9153/23384 [00:20<00:07, 1914.02it/s] 40%|████      | 9358/23384 [00:20<00:07, 1941.42it/s] 41%|████      | 9565/23384 [00:20<00:06, 1976.42it/s] 42%|████▏     | 9775/23384 [00:20<00:06, 2009.66it/s] 43%|████▎     | 10062/23384 [00:20<00:05, 2259.76it/s] 45%|████▍     | 10433/23384 [00:20<00:04, 2685.09it/s] 46%|████▋     | 10820/23384 [00:20<00:04, 3035.40it/s] 48%|████▊     | 11210/23384 [00:20<00:03, 3291.58it/s] 49%|████▉     | 11575/23384 [00:20<00:03, 3397.64it/s] 51%|█████     | 11966/23384 [00:20<00:03, 3549.67it/s] 53%|█████▎    | 12352/23384 [00:21<00:03, 3641.84it/s] 55%|█████▍    | 12750/23384 [00:21<00:02, 3741.35it/s] 56%|█████▌    | 13143/23384 [00:21<00:02, 3797.55it/s] 58%|█████▊    | 13533/23384 [00:21<00:02, 3827.32it/s] 60%|█████▉    | 13927/23384 [00:21<00:02, 3860.47it/s] 61%|██████▏   | 14328/23384 [00:21<00:02, 3905.17it/s] 63%|██████▎   | 14719/23384 [00:21<00:02, 3889.90it/s] 65%|██████▍   | 15109/23384 [00:21<00:02, 3891.20it/s] 66%|██████▋   | 15500/23384 [00:21<00:02, 3894.22it/s] 68%|██████▊   | 15898/23384 [00:21<00:01, 3919.06it/s] 70%|██████▉   | 16290/23384 [00:22<00:03, 1871.53it/s] 71%|███████   | 16590/23384 [00:23<00:08, 785.04it/s]  72%|███████▏  | 16875/23384 [00:23<00:06, 959.36it/s] 74%|███████▍  | 17271/23384 [00:23<00:04, 1282.12it/s] 76%|███████▌  | 17664/23384 [00:23<00:03, 1634.84it/s] 77%|███████▋  | 18065/23384 [00:23<00:02, 2013.98it/s] 79%|███████▉  | 18462/23384 [00:24<00:02, 2376.73it/s] 81%|████████  | 18867/23384 [00:24<00:01, 2727.69it/s] 82%|████████▏ | 19256/23384 [00:24<00:01, 2994.69it/s] 84%|████████▍ | 19655/23384 [00:24<00:01, 3240.50it/s] 86%|████████▌ | 20047/23384 [00:24<00:00, 3416.99it/s] 87%|████████▋ | 20454/23384 [00:24<00:00, 3592.34it/s] 89%|████████▉ | 20847/23384 [00:24<00:00, 3679.90it/s] 91%|█████████ | 21239/23384 [00:24<00:00, 3705.41it/s] 92%|█████████▏| 21628/23384 [00:24<00:00, 3757.26it/s] 94%|█████████▍| 22022/23384 [00:24<00:00, 3809.76it/s] 96%|█████████▌| 22414/23384 [00:25<00:00, 3842.04it/s] 98%|█████████▊| 22805/23384 [00:25<00:00, 3859.15it/s] 99%|█████████▉| 23196/23384 [00:25<00:00, 3864.89it/s]100%|██████████| 23384/23384 [00:25<00:00, 925.28it/s] 
+Completing loading t2m dataset
+Calculating dataset hash:   0%|          | 0/24546 [00:00<?, ?it/s]Calculating dataset hash:   7%|▋         | 1816/24546 [00:00<00:01, 18158.11it/s]Calculating dataset hash:  15%|█▍        | 3632/24546 [00:00<00:01, 16463.63it/s]Calculating dataset hash:  22%|██▏       | 5289/24546 [00:00<00:01, 15277.89it/s]Calculating dataset hash:  28%|██▊       | 6827/24546 [00:00<00:01, 14336.41it/s]Calculating dataset hash:  34%|███▎      | 8270/24546 [00:00<00:01, 13788.87it/s]Calculating dataset hash:  39%|███▉      | 9654/24546 [00:00<00:01, 12949.06it/s]Calculating dataset hash:  45%|████▍     | 10955/24546 [00:00<00:01, 12327.58it/s]Calculating dataset hash:  50%|████▉     | 12192/24546 [00:00<00:01, 11617.24it/s]Calculating dataset hash:  54%|█████▍    | 13359/24546 [00:01<00:01, 10976.45it/s]Calculating dataset hash:  59%|█████▉    | 14461/24546 [00:01<00:00, 10308.52it/s]Calculating dataset hash:  63%|██████▎   | 15497/24546 [00:01<00:00, 9722.72it/s] Calculating dataset hash:  67%|██████▋   | 16474/24546 [00:01<00:00, 9055.27it/s]Calculating dataset hash:  71%|███████   | 17385/24546 [00:01<00:00, 8023.85it/s]Calculating dataset hash:  74%|███████▍  | 18204/24546 [00:01<00:00, 7720.79it/s]Calculating dataset hash:  78%|███████▊  | 19228/24546 [00:01<00:00, 8356.45it/s]Calculating dataset hash:  82%|████████▏ | 20221/24546 [00:01<00:00, 8772.59it/s]Calculating dataset hash:  87%|████████▋ | 21247/24546 [00:01<00:00, 9180.46it/s]Calculating dataset hash:  91%|█████████ | 22269/24546 [00:02<00:00, 9471.90it/s]Calculating dataset hash:  95%|█████████▍| 23292/24546 [00:02<00:00, 9689.36it/s]Calculating dataset hash:  99%|█████████▉| 24315/24546 [00:02<00:00, 9846.15it/s]Calculating dataset hash: 100%|██████████| 24546/24546 [00:02<00:00, 10593.37it/s]
+[Cache]  读取已有缓存: ./text_cache/t2m/train/t5/raw_embeds.pt
+
+Initializing model ...
+Namespace(name='ant_t2m_test', dataset_name='t2m', feat_bias=5, checkpoints_dir='./checkpoints', log_every=500, save_interval=5000, num_layers=8, latent_dim=512, text_latent_dim=256, time_dim=512, base_dim=512, dim_mults=[2, 2, 2, 2], no_eff=False, no_adagn=False, diffusion_steps=1000, prediction_type='sample', text_encoder_type='t5', abstractor=True, disable_sta=False, laten_size=77, dropout=0.1, seed=0, num_train_steps=150000, lr=0.0001, decay_rate=0.9, update_lr_steps=5000, cond_mask_prob=0.1, clip_grad_norm=1, weight_decay=0.01, batch_size=64, beta_schedule='linear', enable_trace=False, use_text_cache=True, is_continue=False, continue_ckpt='latest.tar', opt_path='', which_ckpt='latest_120000', evaluator_dir='./data/pretrained_models', eval_meta_dir='./data', glove_dir='./data/glove', num_inference_steps=10, diffuser_name='dpmsolver', no_ema=False, no_fp16=False, enable_cfg_scheduler=False, cfg_scheduler_type='none', replication_times=20, batch_size_eval=32, diversity_times=300, mm_num_samples=100, mm_num_repeats=30, mm_num_times=10, evl_mode='fid', cfg_scale=2.5, model_ema=False, model_ema_steps=32, model_ema_decay=0.9999, unit_length=4, max_text_len=20, text_enc_mod='bigru', estimator_mod='bigru', dim_text_hidden=512, dim_att_vec=512, dim_z=128, dim_movement_enc_hidden=512, dim_movement_dec_hidden=512, dim_movement_latent=512, dim_word=300, dim_pos_ohot=15, dim_motion_hidden=1024, dim_coemb_hidden=512, joints_num=22, dim_pose=263, max_motion_length=196, radius=4, fps=20, device=device(type='cuda'), is_train=True, save_root='./checkpoints/t2m/ant_t2m_test', model_dir='./checkpoints/t2m/ant_t2m_test/model', meta_dir='./checkpoints/t2m/ant_t2m_test/meta')
+Creating UNet with text encoder: 't5'
+Loading T5 model from: ./T5
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 31.28it/s]
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Building STA connector.
+[CondUnet1D] Dims: [263, 1024, 1024, 1024, 1024], Multipliers: [2, 2, 2, 2]
+T2M-Unet model created successfully.
+Finish building Model.
+
+Model trainable parameters: 301129991
+Model total parameters: 1524657415
+Diffusion_config:
+ FrozenDict([('num_train_timesteps', 1000), ('beta_start', 0.0001), ('beta_end', 0.02), ('beta_schedule', 'linear'), ('trained_betas', None), ('variance_type', 'fixed_small'), ('clip_sample', False), ('prediction_type', 'sample'), ('thresholding', False), ('dynamic_thresholding_ratio', 0.995), ('clip_sample_range', 1.0), ('sample_max_value', 1.0), ('timestep_spacing', 'leading'), ('steps_offset', 0), ('rescale_betas_zero_snr', False), ('_use_default_values', ['trained_betas', 'thresholding', 'sample_max_value', 'dynamic_thresholding_ratio', 'beta_end', 'rescale_betas_zero_snr', 'steps_offset', 'clip_sample_range', 'timestep_spacing', 'beta_start'])])
+Start experiment: 2025-08-26_04:20:30
+Setting up evaluation components...
+
+Loading Evaluation Model Wrapper (Epoch 28) Completed!!
+
+ Loading gt_eval mode HumanML3D dataset ...
+./data/t2m_std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s]  3%|▎         | 45/1460 [00:00<00:03, 441.11it/s]  6%|▌         | 90/1460 [00:00<00:03, 389.46it/s]  9%|▉         | 130/1460 [00:00<00:04, 303.10it/s] 13%|█▎        | 184/1460 [00:00<00:03, 372.18it/s] 15%|█▌        | 224/1460 [00:00<00:03, 369.61it/s] 18%|█▊        | 266/1460 [00:00<00:03, 383.07it/s] 23%|██▎       | 331/1460 [00:00<00:02, 454.39it/s] 26%|██▌       | 378/1460 [00:00<00:02, 430.17it/s] 31%|███       | 456/1460 [00:01<00:01, 510.27it/s] 35%|███▍      | 508/1460 [00:01<00:02, 455.38it/s] 38%|███▊      | 555/1460 [00:01<00:02, 432.12it/s] 41%|████      | 600/1460 [00:01<00:02, 427.22it/s] 44%|████▍     | 644/1460 [00:01<00:01, 421.63it/s] 48%|████▊     | 696/1460 [00:01<00:01, 444.45it/s] 51%|█████     | 741/1460 [00:01<00:01, 429.63it/s] 77%|███████▋  | 1124/1460 [00:01<00:00, 1370.20it/s]100%|██████████| 1460/1460 [00:01<00:00, 757.44it/s] 
+Completing loading t2m dataset
+Calculating dataset hash:   0%|          | 0/1530 [00:00<?, ?it/s]Calculating dataset hash:  39%|███▉      | 601/1530 [00:00<00:00, 6000.46it/s]Calculating dataset hash:  79%|███████▊  | 1202/1530 [00:00<00:00, 5469.59it/s]Calculating dataset hash: 100%|██████████| 1530/1530 [00:00<00:00, 5435.09it/s]
+[Cache]  读取已有缓存: ./text_cache/t2m/val/t5/raw_embeds.pt
+
+ Loading eval mode HumanML3D dataset ...
+./checkpoints/t2m/ant_t2m_test/meta/std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 28%|██▊       | 411/1460 [00:00<00:00, 4106.19it/s] 57%|█████▋    | 825/1460 [00:00<00:00, 4120.44it/s] 86%|████████▌ | 1253/1460 [00:00<00:00, 4190.54it/s]100%|██████████| 1460/1460 [00:00<00:00, 4173.03it/s]
+Completing loading t2m dataset
+Evaluation components are ready.
+Need to train for 392 epochs....
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/kuimou/openANT/scripts/train/train.py", line 91, in <module>
+    trainer.train(train_datasetloader)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 311, in train
+    self.forward(batch_data)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 111, in forward
+    self.prediction = self.model(
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 659, in _fn
+    raise e.with_traceback(None) from None
+torch._dynamo.exc.Unsupported: Dynamic shape operator
+  Explanation: Operator `aten.nonzero.default`'s output shape depends on input Tensor data.
+  Hint: Enable tracing of dynamic shape operators with `torch._dynamo.config.capture_dynamic_output_shape_ops = True`
+
+  Developer debug context: aten.nonzero.default
+
+
+from user code:
+   File "/data/kuimou/openANT/models/t2m_unet.py", line 156, in forward
+    cond_indices = self.mask_cond(B, force_mask=uncond)
+  File "/data/kuimou/openANT/models/t2m_unet.py", line 89, in mask_cond
+    return torch.nonzero(1. - mask).squeeze(-1)
+
+Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1199, in launch_command
+    simple_launcher(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 785, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/data/kuimou/miniconda3/envs/openANT_test/bin/python3.10', '-m', 'scripts.train.train', '--abstractor', '--use_text_cache', '--num_train_steps', '150000', '--name', 'ant_t2m_test']' returned non-zero exit status 1.

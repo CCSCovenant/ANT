@@ -1,0 +1,28 @@
+# -- Hugging Face Ecosystem --
+accelerate
+transformers
+einops
+diffusers
+sentencepiece
+
+# -- Train --
+deepspeed
+
+# -- Visualization, Demo & Tools --
+gradio
+tensorboard
+panda3d
+opencv-python
+scipy
+matplotlib
+tqdm
+spacy
+wandb
+# -- debugging --
+nvtx
+# -- Other specific dependencies --
+smplx
+pot # for moclip eval
+
+# -- Directly from GitHub --
+git+https://github.com/openai/CLIP.git

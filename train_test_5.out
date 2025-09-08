@@ -1,0 +1,159 @@
+ipex flag is deprecated, will be removed in Accelerate v1.10. From 2.7.0, PyTorch has all needed optimizations for Intel CPU and XPU.
+------------ Options -------------
+abstractor: True
+base_dim: 512
+batch_size: 64
+batch_size_eval: 32
+beta_schedule: linear
+cfg_scale: 2.5
+cfg_scheduler_type: none
+checkpoints_dir: ./checkpoints
+clip_grad_norm: 1
+cond_mask_prob: 0.1
+continue_ckpt: latest.tar
+dataset_name: t2m
+decay_rate: 0.9
+diffuser_name: dpmsolver
+diffusion_steps: 1000
+dim_mults: [2, 2, 2, 2]
+disable_sta: False
+diversity_times: 300
+dropout: 0.1
+enable_cfg_scheduler: False
+enable_trace: False
+eval_meta_dir: ./data
+evaluator_dir: ./data/pretrained_models
+evl_mode: fid
+feat_bias: 5
+glove_dir: ./data/glove
+is_continue: False
+laten_size: 77
+latent_dim: 512
+log_every: 500
+lr: 0.0001
+mm_num_repeats: 30
+mm_num_samples: 100
+mm_num_times: 10
+model_ema: False
+model_ema_decay: 0.9999
+model_ema_steps: 32
+name: ant_t2m_test
+no_adagn: False
+no_eff: False
+no_ema: False
+no_fp16: False
+num_inference_steps: 10
+num_layers: 8
+num_train_steps: 150000
+opt_path: 
+prediction_type: sample
+replication_times: 20
+save_interval: 5000
+seed: 0
+text_encoder_type: t5
+text_latent_dim: 256
+time_dim: 512
+update_lr_steps: 5000
+use_text_cache: True
+weight_decay: 0.01
+which_ckpt: latest_120000
+-------------- End ----------------
+
+ Loading train mode HumanML3D train dataset ...
+  0%|          | 0/23384 [00:00<?, ?it/s]  1%|▏         | 341/23384 [00:00<00:06, 3408.97it/s]  3%|▎         | 733/23384 [00:00<00:06, 3707.05it/s]  5%|▍         | 1121/23384 [00:00<00:05, 3784.01it/s]  7%|▋         | 1521/23384 [00:00<00:05, 3864.51it/s]  8%|▊         | 1918/23384 [00:00<00:05, 3900.21it/s] 10%|▉         | 2318/23384 [00:00<00:05, 3933.56it/s] 12%|█▏        | 2712/23384 [00:00<00:05, 3912.20it/s] 13%|█▎        | 3104/23384 [00:00<00:05, 3904.32it/s] 15%|█▍        | 3507/23384 [00:00<00:05, 3940.94it/s] 17%|█▋        | 3912/23384 [00:01<00:04, 3972.06it/s] 18%|█▊        | 4321/23384 [00:01<00:04, 4007.69it/s] 20%|██        | 4722/23384 [00:01<00:04, 3994.70it/s] 22%|██▏       | 5123/23384 [00:01<00:04, 3998.68it/s] 24%|██▎       | 5523/23384 [00:01<00:04, 3996.47it/s] 25%|██▌       | 5923/23384 [00:01<00:04, 3962.95it/s] 27%|██▋       | 6322/23384 [00:01<00:04, 3967.54it/s] 29%|██▊       | 6719/23384 [00:01<00:04, 3968.15it/s] 30%|███       | 7130/23384 [00:01<00:04, 4010.17it/s] 32%|███▏      | 7532/23384 [00:01<00:03, 3999.39it/s] 34%|███▍      | 7932/23384 [00:02<00:05, 2716.81it/s] 36%|███▌      | 8311/23384 [00:02<00:05, 2956.95it/s] 37%|███▋      | 8719/23384 [00:02<00:04, 3229.77it/s] 39%|███▉      | 9117/23384 [00:02<00:04, 3421.22it/s] 41%|████      | 9507/23384 [00:02<00:03, 3547.99it/s] 42%|████▏     | 9885/23384 [00:02<00:03, 3491.81it/s] 44%|████▍     | 10287/23384 [00:02<00:03, 3637.92it/s] 46%|████▌     | 10682/23384 [00:02<00:03, 3725.70it/s] 47%|████▋     | 11076/23384 [00:02<00:03, 3786.85it/s] 49%|████▉     | 11467/23384 [00:03<00:03, 3822.29it/s] 51%|█████     | 11863/23384 [00:03<00:02, 3861.18it/s] 52%|█████▏    | 12259/23384 [00:03<00:02, 3888.03it/s] 54%|█████▍    | 12658/23384 [00:03<00:02, 3915.21it/s] 56%|█████▌    | 13068/23384 [00:03<00:02, 3968.78it/s] 58%|█████▊    | 13467/23384 [00:03<00:02, 3960.45it/s] 59%|█████▉    | 13871/23384 [00:03<00:02, 3982.05it/s] 61%|██████    | 14276/23384 [00:03<00:02, 4001.86it/s] 63%|██████▎   | 14677/23384 [00:03<00:02, 3997.23it/s] 64%|██████▍   | 15078/23384 [00:03<00:02, 3989.47it/s] 66%|██████▌   | 15479/23384 [00:04<00:01, 3993.74it/s] 68%|██████▊   | 15886/23384 [00:04<00:01, 4014.71it/s] 70%|██████▉   | 16288/23384 [00:04<00:01, 3960.73it/s] 71%|███████▏  | 16689/23384 [00:04<00:01, 3972.86it/s] 73%|███████▎  | 17092/23384 [00:04<00:01, 3988.54it/s] 75%|███████▍  | 17504/23384 [00:04<00:01, 4024.82it/s] 77%|███████▋  | 17909/23384 [00:04<00:01, 4031.46it/s] 78%|███████▊  | 18313/23384 [00:04<00:01, 4026.71it/s] 80%|████████  | 18731/23384 [00:04<00:01, 4071.07it/s] 82%|████████▏ | 19139/23384 [00:04<00:01, 4050.21it/s] 84%|████████▎ | 19550/23384 [00:05<00:00, 4066.27it/s] 85%|████████▌ | 19957/23384 [00:05<00:00, 4061.06it/s] 87%|████████▋ | 20368/23384 [00:05<00:00, 4073.64it/s] 89%|████████▉ | 20777/23384 [00:05<00:00, 4077.67it/s] 91%|█████████ | 21185/23384 [00:05<00:00, 4030.63it/s] 92%|█████████▏| 21594/23384 [00:05<00:00, 4046.20it/s] 94%|█████████▍| 22003/23384 [00:05<00:00, 4057.60it/s] 96%|█████████▌| 22409/23384 [00:05<00:00, 4054.44it/s] 98%|█████████▊| 22815/23384 [00:05<00:00, 4049.27it/s] 99%|█████████▉| 23220/23384 [00:06<00:00, 4027.70it/s]100%|██████████| 23384/23384 [00:06<00:00, 3869.97it/s]
+Completing loading t2m dataset
+Calculating dataset hash:   0%|          | 0/24546 [00:00<?, ?it/s]Calculating dataset hash:   8%|▊         | 1844/24546 [00:00<00:01, 18431.98it/s]Calculating dataset hash:  15%|█▌        | 3688/24546 [00:00<00:01, 16943.65it/s]Calculating dataset hash:  22%|██▏       | 5391/24546 [00:00<00:01, 15738.96it/s]Calculating dataset hash:  28%|██▊       | 6975/24546 [00:00<00:01, 14887.31it/s]Calculating dataset hash:  35%|███▍      | 8471/24546 [00:00<00:01, 14477.43it/s]Calculating dataset hash:  40%|████      | 9923/24546 [00:00<00:01, 13865.92it/s]Calculating dataset hash:  46%|████▌     | 11313/24546 [00:00<00:01, 13141.15it/s]Calculating dataset hash:  51%|█████▏    | 12632/24546 [00:00<00:00, 12405.38it/s]Calculating dataset hash:  57%|█████▋    | 13878/24546 [00:01<00:00, 11682.33it/s]Calculating dataset hash:  61%|██████▏   | 15053/24546 [00:01<00:00, 10991.82it/s]Calculating dataset hash:  66%|██████▌   | 16159/24546 [00:01<00:00, 10490.14it/s]Calculating dataset hash:  70%|███████   | 17212/24546 [00:01<00:00, 9221.71it/s] Calculating dataset hash:  74%|███████▍  | 18261/24546 [00:01<00:00, 9539.13it/s]Calculating dataset hash:  79%|███████▊  | 19311/24546 [00:01<00:00, 9792.84it/s]Calculating dataset hash:  83%|████████▎ | 20361/24546 [00:01<00:00, 9984.09it/s]Calculating dataset hash:  87%|████████▋ | 21411/24546 [00:01<00:00, 10128.97it/s]Calculating dataset hash:  92%|█████████▏| 22460/24546 [00:01<00:00, 10231.70it/s]Calculating dataset hash:  96%|█████████▌| 23509/24546 [00:02<00:00, 10304.12it/s]Calculating dataset hash: 100%|██████████| 24546/24546 [00:02<00:00, 10246.34it/s]Calculating dataset hash: 100%|██████████| 24546/24546 [00:02<00:00, 11513.60it/s]
+[Cache]  读取已有缓存: ./text_cache/t2m/train/t5/raw_embeds.pt
+
+Initializing model ...
+Namespace(name='ant_t2m_test', dataset_name='t2m', feat_bias=5, checkpoints_dir='./checkpoints', log_every=500, save_interval=5000, num_layers=8, latent_dim=512, text_latent_dim=256, time_dim=512, base_dim=512, dim_mults=[2, 2, 2, 2], no_eff=False, no_adagn=False, diffusion_steps=1000, prediction_type='sample', text_encoder_type='t5', abstractor=True, disable_sta=False, laten_size=77, dropout=0.1, seed=0, num_train_steps=150000, lr=0.0001, decay_rate=0.9, update_lr_steps=5000, cond_mask_prob=0.1, clip_grad_norm=1, weight_decay=0.01, batch_size=64, beta_schedule='linear', enable_trace=False, use_text_cache=True, is_continue=False, continue_ckpt='latest.tar', opt_path='', which_ckpt='latest_120000', evaluator_dir='./data/pretrained_models', eval_meta_dir='./data', glove_dir='./data/glove', num_inference_steps=10, diffuser_name='dpmsolver', no_ema=False, no_fp16=False, enable_cfg_scheduler=False, cfg_scheduler_type='none', replication_times=20, batch_size_eval=32, diversity_times=300, mm_num_samples=100, mm_num_repeats=30, mm_num_times=10, evl_mode='fid', cfg_scale=2.5, model_ema=False, model_ema_steps=32, model_ema_decay=0.9999, unit_length=4, max_text_len=20, text_enc_mod='bigru', estimator_mod='bigru', dim_text_hidden=512, dim_att_vec=512, dim_z=128, dim_movement_enc_hidden=512, dim_movement_dec_hidden=512, dim_movement_latent=512, dim_word=300, dim_pos_ohot=15, dim_motion_hidden=1024, dim_coemb_hidden=512, joints_num=22, dim_pose=263, max_motion_length=196, radius=4, fps=20, device=device(type='cuda'), is_train=True, save_root='./checkpoints/t2m/ant_t2m_test', model_dir='./checkpoints/t2m/ant_t2m_test/model', meta_dir='./checkpoints/t2m/ant_t2m_test/meta')
+Creating UNet with text encoder: 't5'
+Loading T5 model from: ./T5
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 34.07it/s]
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Building STA connector.
+[CondUnet1D] Dims: [263, 1024, 1024, 1024, 1024], Multipliers: [2, 2, 2, 2]
+T2M-Unet model created successfully.
+Finish building Model.
+
+Model trainable parameters: 301129991
+Model total parameters: 1524657415
+Diffusion_config:
+ FrozenDict([('num_train_timesteps', 1000), ('beta_start', 0.0001), ('beta_end', 0.02), ('beta_schedule', 'linear'), ('trained_betas', None), ('variance_type', 'fixed_small'), ('clip_sample', False), ('prediction_type', 'sample'), ('thresholding', False), ('dynamic_thresholding_ratio', 0.995), ('clip_sample_range', 1.0), ('sample_max_value', 1.0), ('timestep_spacing', 'leading'), ('steps_offset', 0), ('rescale_betas_zero_snr', False), ('_use_default_values', ['sample_max_value', 'steps_offset', 'beta_end', 'rescale_betas_zero_snr', 'trained_betas', 'thresholding', 'dynamic_thresholding_ratio', 'beta_start', 'timestep_spacing', 'clip_sample_range'])])
+Start experiment: 2025-08-26_05:13:15
+Setting up evaluation components...
+
+Loading Evaluation Model Wrapper (Epoch 28) Completed!!
+
+ Loading gt_eval mode HumanML3D dataset ...
+./data/t2m_std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 38%|███▊      | 550/1460 [00:00<00:00, 5498.76it/s] 78%|███████▊  | 1138/1460 [00:00<00:00, 5722.56it/s]100%|██████████| 1460/1460 [00:00<00:00, 5541.39it/s]
+Completing loading t2m dataset
+Calculating dataset hash:   0%|          | 0/1530 [00:00<?, ?it/s]Calculating dataset hash:  38%|███▊      | 589/1530 [00:00<00:00, 5887.04it/s]Calculating dataset hash:  77%|███████▋  | 1178/1530 [00:00<00:00, 5356.66it/s]Calculating dataset hash: 100%|██████████| 1530/1530 [00:00<00:00, 5295.25it/s]
+[Cache]  读取已有缓存: ./text_cache/t2m/val/t5/raw_embeds.pt
+
+ Loading eval mode HumanML3D dataset ...
+./checkpoints/t2m/ant_t2m_test/meta/std.npy
+  0%|          | 0/1460 [00:00<?, ?it/s] 27%|██▋       | 401/1460 [00:00<00:00, 4009.63it/s] 55%|█████▌    | 808/1460 [00:00<00:00, 4044.18it/s] 84%|████████▍ | 1227/1460 [00:00<00:00, 4107.26it/s]100%|██████████| 1460/1460 [00:00<00:00, 4086.73it/s]
+Completing loading t2m dataset
+Evaluation components are ready.
+Need to train for 392 epochs....
+epoch:   1 niter:    500  inner_iter:  116 6m 6s loss_mot_rec: 0.7878 
+epoch:   2 niter:   1000  inner_iter:  233 11m 48s loss_mot_rec: 0.5361 
+epoch:   3 niter:   1500  inner_iter:  350 17m 28s loss_mot_rec: 0.4792 
+epoch:   5 niter:   2000  inner_iter:   84 23m 12s loss_mot_rec: 0.4472 
+epoch:   6 niter:   2500  inner_iter:  201 28m 53s loss_mot_rec: 0.4392 
+epoch:   7 niter:   3000  inner_iter:  318 34m 33s loss_mot_rec: 0.4246 
+epoch:   9 niter:   3500  inner_iter:   52 40m 15s loss_mot_rec: 0.4136 
+epoch:  10 niter:   4000  inner_iter:  169 45m 56s loss_mot_rec: 0.3988 
+epoch:  11 niter:   4500  inner_iter:  286 51m 39s loss_mot_rec: 0.3939 
+epoch:  13 niter:   5000  inner_iter:   20 57m 21s loss_mot_rec: 0.3896 
+Saving checkpoint at iteration 5000...
+[2025-08-26 06:10:38,014] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-08-26 06:10:41,289] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+--- Starting evaluation at iteration 5000 ---
+Using standard model for evaluation.
+Pipeline initialized with scheduler: DPMSolverMultistepScheduler
+Time: 2025-08-26 06:10:59.983606
+0it [00:00, ?it/s]8it [00:00, 76.72it/s]18it [00:00, 90.16it/s]35it [00:00, 123.96it/s]52it [00:00, 141.52it/s]67it [00:00, 136.45it/s]85it [00:00, 148.21it/s]102it [00:00, 154.58it/s]120it [00:00, 160.73it/s]137it [00:00, 162.93it/s]155it [00:01, 166.31it/s]172it [00:01, 155.07it/s]189it [00:01, 158.57it/s]206it [00:01, 161.58it/s]224it [00:01, 164.60it/s]241it [00:01, 164.77it/s]259it [00:01, 167.04it/s]276it [00:01, 167.57it/s]293it [00:01, 167.80it/s]310it [00:01, 167.85it/s]328it [00:02, 168.83it/s]345it [00:02, 168.57it/s]363it [00:02, 170.77it/s]381it [00:02, 153.73it/s]399it [00:02, 158.94it/s]417it [00:02, 162.04it/s]434it [00:02, 164.07it/s]451it [00:02, 163.50it/s]469it [00:02, 165.71it/s]487it [00:03, 168.81it/s]505it [00:03, 170.65it/s]523it [00:03, 170.15it/s]541it [00:03, 171.39it/s]559it [00:03, 170.07it/s]577it [00:03, 170.44it/s]595it [00:03, 170.13it/s]613it [00:03, 166.81it/s]630it [00:03, 167.17it/s]647it [00:04, 66.16it/s] 665it [00:04, 82.03it/s]683it [00:04, 97.69it/s]701it [00:04, 112.66it/s]718it [00:04, 123.94it/s]735it [00:05, 134.38it/s]752it [00:05, 138.47it/s]770it [00:05, 146.94it/s]787it [00:05, 144.84it/s]805it [00:05, 152.29it/s]822it [00:05, 149.69it/s]840it [00:05, 155.63it/s]858it [00:05, 159.97it/s]875it [00:05, 156.86it/s]893it [00:06, 160.66it/s]911it [00:06, 164.14it/s]928it [00:06, 165.22it/s]946it [00:06, 166.82it/s]963it [00:06, 167.23it/s]981it [00:06, 169.15it/s]999it [00:06, 170.02it/s]1017it [00:06, 168.01it/s]1035it [00:06, 169.09it/s]1053it [00:06, 170.25it/s]1071it [00:07, 168.02it/s]1089it [00:07, 169.06it/s]1107it [00:07, 170.72it/s]1125it [00:07, 170.66it/s]1143it [00:07, 170.88it/s]1161it [00:07, 172.00it/s]1179it [00:07, 165.57it/s]1196it [00:07, 165.14it/s]1214it [00:07, 167.36it/s]1232it [00:08, 169.13it/s]1250it [00:08, 169.73it/s]1268it [00:08, 170.13it/s]1286it [00:08, 170.66it/s]1304it [00:08, 170.49it/s]1322it [00:08, 171.69it/s]1340it [00:08, 170.51it/s]1358it [00:08, 171.54it/s]1376it [00:08, 172.43it/s]1394it [00:08, 171.77it/s]1412it [00:09, 170.81it/s]1430it [00:09, 170.73it/s]1448it [00:09, 171.18it/s]1466it [00:09, 171.66it/s]1484it [00:09, 166.13it/s]1502it [00:09, 168.34it/s]1520it [00:09, 169.77it/s]1530it [00:10, 145.10it/s]
+
+Using DPMSolverMultistepScheduler with classifier-free-guidance to generate 4430 motions (10 steps).
+  0%|          | 0/139 [00:00<?, ?it/s]  0%|          | 0/139 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/data/kuimou/openANT/scripts/train/train.py", line 93, in <module>
+    trainer.train(train_datasetloader)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 337, in train
+    self.evaluate(it, eval_wrapper, gt_loader, gen_dataset)
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 259, in evaluate
+    all_metrics = evaluation_fid(
+  File "/data/kuimou/openANT/eval/eval_t2m_base.py", line 147, in evaluation
+    motion_loader, mm_motion_loader,eval_generate_time = motion_loader_getter()
+  File "/data/kuimou/openANT/trainers/ddpm_trainer.py", line 241, in <lambda>
+    'text2motion': lambda: get_motion_loader(
+  File "/data/kuimou/openANT/motion_loader/model_motion_loaders.py", line 174, in get_motion_loader
+    dataset = GeneratedDataset(opt, pipeline, ground_truth_dataset, w_vectorizer, mm_num_samples, mm_num_repeats)
+  File "/data/kuimou/openANT/motion_loader/model_motion_loaders.py", line 58, in __init__
+    all_pred_motions,t_eval = pipeline.generate(all_caption, all_m_lens)
+  File "/data/kuimou/openANT/models/gassuian_diffusion.py", line 104, in generate
+    output = self.generate_batch(batch_caption, batch_m_lens)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/data/kuimou/openANT/models/gassuian_diffusion.py", line 66, in generate_batch
+    enc_text = self.model.encode_text(caption)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1940, in __getattr__
+    raise AttributeError(
+AttributeError: 'T2MUnet' object has no attribute 'encode_text'
+Traceback (most recent call last):
+  File "/data/kuimou/miniconda3/envs/openANT_test/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 50, in main
+    args.func(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1199, in launch_command
+    simple_launcher(args)
+  File "/data/kuimou/miniconda3/envs/openANT_test/lib/python3.10/site-packages/accelerate/commands/launch.py", line 785, in simple_launcher
+    raise subprocess.CalledProcessError(returncode=process.returncode, cmd=cmd)
+subprocess.CalledProcessError: Command '['/data/kuimou/miniconda3/envs/openANT_test/bin/python3.10', '-m', 'scripts.train.train', '--abstractor', '--use_text_cache', '--num_train_steps', '150000', '--name', 'ant_t2m_test']' returned non-zero exit status 1.
