@@ -1,18 +1,28 @@
 import sys
 import os
-os.chdir('/home/data2/bkjiahaozhe/StableMoFusion/wenshuo/StableMoFusion')
-sys.path.append('/home/data2/bkjiahaozhe/StableMoFusion/wenshuo/StableMoFusion')
+# 中文注释：使用当前项目目录，注释掉外部工程路径依赖，避免路径冲突
+# os.chdir('/home/data2/bkjiahaozhe/StableMoFusion/wenshuo/StableMoFusion')
+# sys.path.append('/home/data2/bkjiahaozhe/StableMoFusion/wenshuo/StableMoFusion')
+
+# 中文注释：确保项目根目录在 sys.path 中，避免从 scripts/train 目录运行时无法导入 options 等本地包
+_CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+_PROJECT_ROOT = os.path.abspath(os.path.join(_CURRENT_DIR, os.pardir, os.pardir))
+if _PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, _PROJECT_ROOT)
+
 from os.path import join as pjoin
 from options.train_options import TrainOptions
 from utils.plot_script import *
 
-from models import build_models
+# 中文注释：改为使用 UnetFactory 创建模型（与单卡脚本一致）
+from models.unet_factory import UnetFactory
 from utils.ema import ExponentialMovingAverage
-from trainers import DDPMTrainer
+from trainers.ddpm_trainer_ddp import DDPMTrainer  # 中文注释：使用分布式版本的DDPMTrainer
 from motion_loader import get_dataset_loader
 
 from accelerate.utils import set_seed
 from accelerate import Accelerator
+# 使用 DistributedDataParallel 进行单机多卡训练
 import torch
 
 if __name__ == '__main__':
@@ -35,7 +45,8 @@ if __name__ == '__main__':
 
 
     accelerator.print('\nInitializing model ...' )
-    encoder = build_models(opt)
+    # 中文注释：与单卡脚本一致，使用工厂创建UNet
+    encoder = UnetFactory.create_unet(opt)
     model_ema = None
     if opt.model_ema:
         # Decay adjustment that aims to keep the decay independent of other hyper-parameters originally proposed at:

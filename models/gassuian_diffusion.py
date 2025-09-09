@@ -63,17 +63,16 @@ class DiffusePipeline(object):
         self.scheduler.set_timesteps(self.num_inference_steps, device=self.device)
         
         # 3. Pre-calculate text embeddings to avoid re-computation in the loop
-        proj_embeds = self.model.encode_text(text=caption)
-        
+        raw_embeds = self.model.encode_text(text=caption)
         # 4. Iteratively denoise the sample
         for t in self.scheduler.timesteps:
             timestep_batch = torch.full((B,), t, device=self.device, dtype=torch.long)
 
             # Use classifier-free guidance if enabled in the model
             if getattr(self.model, 'cond_mask_prob', 0) > 0:
-                model_output = self.model.forward_with_cfg(sample, timestep_batch, text=caption, proj_embeds=proj_embeds,opt=self.opt)
+                model_output = self.model.forward_with_cfg(sample, timestep_batch, text=caption, raw_embeds=raw_embeds,opt=self.opt)
             else:
-                model_output = self.model(sample, timestep_batch, enc_text=enc_text)
+                model_output = self.model(sample, timestep_batch, text=caption)
 
             # 5. Compute the previous noisy sample using the scheduler
             sample = self.scheduler.step(model_output, t, sample).prev_sample

@@ -339,7 +339,6 @@ class DDPMTrainer(object):
                 #nvtx.pop_range()
             #nvtx.end_range(rng)
         self.accelerator.print(f"Training completed after {it} iterations.")        
-        sys.exit(0)
         if it % self.opt.save_interval != 0 and self.accelerator.is_main_process:
             self.save(pjoin(self.opt.model_dir, 'latest.tar'), it)
 

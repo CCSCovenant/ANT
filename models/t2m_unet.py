@@ -125,7 +125,7 @@ class T2MUnet(nn.Module):
         assert text is not None, "Either text / raw_embeds / proj_embeds must be provided."
         raw = self.text_processor.get_raw_embeds(text)                    # no-grad
         if self.use_sta:
-            return raw_embeds                                # 开启 STA：返回原始编码器输出（形状适配）
+            return raw                                # 开启 STA：返回原始编码器输出（形状适配）
         return self.text_processor.project_embeds(raw)                    # 未开启 STA：可训练投影
 
     # --------------------------------------------------------------------- #
@@ -218,7 +218,6 @@ class T2MUnet(nn.Module):
         enc_text = self.encode_text(
             text=text, raw_embeds=raw_embeds, proj_embeds=proj_embeds
         )
-
         intermediates = {}
         if self.use_sta:
             if return_intermediates:
