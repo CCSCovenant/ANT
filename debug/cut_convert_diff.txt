@@ -1,0 +1,222 @@
+cut_ckpt 转换差异统计
+输入: /data/kuimou/backup/checkpoints/t2m/t2m_t5/model/latest_120000.tar
+输出: /data/kuimou/backup/checkpoints/t2m/t2m_t5/model/cut_latest_120000.tar
+删除前缀: ['t5_encoder.', 't5_encoder.']
+
+[根节点: model_ema]
+- total_in: 686
+- total_out: 466
+- kept: 466
+- dropped: 220
+- renamed: 69
+- renamed_samples:
+  * ella_model.time_embedding.linear_1.weight -> sta_model.time_embedding.linear_1.weight
+  * ella_model.time_embedding.linear_1.bias -> sta_model.time_embedding.linear_1.bias
+  * ella_model.time_embedding.linear_2.weight -> sta_model.time_embedding.linear_2.weight
+  * ella_model.time_embedding.linear_2.bias -> sta_model.time_embedding.linear_2.bias
+  * ella_model.connector.latents -> sta_model.connector.latents
+  * ella_model.connector.time_aware_linear.weight -> sta_model.connector.time_aware_linear.weight
+  * ella_model.connector.time_aware_linear.bias -> sta_model.connector.time_aware_linear.bias
+  * ella_model.connector.proj_in.weight -> sta_model.connector.proj_in.weight
+  * ella_model.connector.proj_in.bias -> sta_model.connector.proj_in.bias
+  * ella_model.connector.perceiver_blocks.0.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.0.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.0.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.0.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.0.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.0.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.0.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.0.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.0.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.0.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.0.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.0.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.0.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.0.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.0.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.0.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.0.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.0.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.0.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.0.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.1.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.1.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.1.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.1.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.1.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.1.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.1.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.1.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.1.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.1.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.1.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.1.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.1.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.1.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.1.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.1.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.1.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.1.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.1.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.1.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.2.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.2.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.2.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.2.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.2.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.2.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.2.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.2.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.2.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.2.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.2.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.2.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.2.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.2.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.2.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.2.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.2.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.2.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.2.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.2.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.3.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.3.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.3.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.3.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.3.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.3.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.3.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.3.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.3.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.3.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.3.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.3.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.3.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.3.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.3.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.3.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.3.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.3.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.3.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.3.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.4.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.4.attn.in_proj_weight
+- dropped_samples:
+  * t5_encoder.model.shared.weight
+  * t5_encoder.model.encoder.embed_tokens.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.relative_attention_bias.weight
+  * t5_encoder.model.encoder.block.0.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.0.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.0.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.0.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.0.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.1.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.1.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.1.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.1.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.1.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.2.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.2.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.2.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.2.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.2.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.3.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.3.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.3.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.3.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.3.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.4.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.4.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.4.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.4.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.4.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.5.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.5.layer.0.SelfAttention.k.weight
+
+[根节点: encoder]
+- total_in: 686
+- total_out: 466
+- kept: 466
+- dropped: 220
+- renamed: 69
+- renamed_samples:
+  * ella_model.time_embedding.linear_1.weight -> sta_model.time_embedding.linear_1.weight
+  * ella_model.time_embedding.linear_1.bias -> sta_model.time_embedding.linear_1.bias
+  * ella_model.time_embedding.linear_2.weight -> sta_model.time_embedding.linear_2.weight
+  * ella_model.time_embedding.linear_2.bias -> sta_model.time_embedding.linear_2.bias
+  * ella_model.connector.latents -> sta_model.connector.latents
+  * ella_model.connector.time_aware_linear.weight -> sta_model.connector.time_aware_linear.weight
+  * ella_model.connector.time_aware_linear.bias -> sta_model.connector.time_aware_linear.bias
+  * ella_model.connector.proj_in.weight -> sta_model.connector.proj_in.weight
+  * ella_model.connector.proj_in.bias -> sta_model.connector.proj_in.bias
+  * ella_model.connector.perceiver_blocks.0.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.0.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.0.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.0.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.0.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.0.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.0.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.0.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.0.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.0.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.0.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.0.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.0.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.0.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.0.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.0.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.0.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.0.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.0.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.0.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.1.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.1.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.1.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.1.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.1.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.1.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.1.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.1.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.1.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.1.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.1.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.1.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.1.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.1.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.1.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.1.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.1.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.1.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.1.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.1.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.2.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.2.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.2.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.2.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.2.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.2.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.2.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.2.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.2.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.2.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.2.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.2.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.2.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.2.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.2.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.2.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.2.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.2.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.2.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.2.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.3.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.3.attn.in_proj_weight
+  * ella_model.connector.perceiver_blocks.3.attn.in_proj_bias -> sta_model.connector.perceiver_blocks.3.attn.in_proj_bias
+  * ella_model.connector.perceiver_blocks.3.attn.out_proj.weight -> sta_model.connector.perceiver_blocks.3.attn.out_proj.weight
+  * ella_model.connector.perceiver_blocks.3.attn.out_proj.bias -> sta_model.connector.perceiver_blocks.3.attn.out_proj.bias
+  * ella_model.connector.perceiver_blocks.3.ln_1.linear.weight -> sta_model.connector.perceiver_blocks.3.ln_1.linear.weight
+  * ella_model.connector.perceiver_blocks.3.ln_1.linear.bias -> sta_model.connector.perceiver_blocks.3.ln_1.linear.bias
+  * ella_model.connector.perceiver_blocks.3.ln_2.linear.weight -> sta_model.connector.perceiver_blocks.3.ln_2.linear.weight
+  * ella_model.connector.perceiver_blocks.3.ln_2.linear.bias -> sta_model.connector.perceiver_blocks.3.ln_2.linear.bias
+  * ella_model.connector.perceiver_blocks.3.ln_ff.linear.weight -> sta_model.connector.perceiver_blocks.3.ln_ff.linear.weight
+  * ella_model.connector.perceiver_blocks.3.ln_ff.linear.bias -> sta_model.connector.perceiver_blocks.3.ln_ff.linear.bias
+  * ella_model.connector.perceiver_blocks.4.attn.in_proj_weight -> sta_model.connector.perceiver_blocks.4.attn.in_proj_weight
+- dropped_samples:
+  * t5_encoder.model.shared.weight
+  * t5_encoder.model.encoder.embed_tokens.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.0.layer.0.SelfAttention.relative_attention_bias.weight
+  * t5_encoder.model.encoder.block.0.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.0.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.0.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.0.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.0.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.1.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.1.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.1.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.1.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.1.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.1.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.2.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.2.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.2.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.2.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.2.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.2.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.3.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.3.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.3.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.3.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.3.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.3.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.k.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.v.weight
+  * t5_encoder.model.encoder.block.4.layer.0.SelfAttention.o.weight
+  * t5_encoder.model.encoder.block.4.layer.0.layer_norm.weight
+  * t5_encoder.model.encoder.block.4.layer.1.DenseReluDense.wi_0.weight
+  * t5_encoder.model.encoder.block.4.layer.1.DenseReluDense.wi_1.weight
+  * t5_encoder.model.encoder.block.4.layer.1.DenseReluDense.wo.weight
+  * t5_encoder.model.encoder.block.4.layer.1.layer_norm.weight
+  * t5_encoder.model.encoder.block.5.layer.0.SelfAttention.q.weight
+  * t5_encoder.model.encoder.block.5.layer.0.SelfAttention.k.weight
