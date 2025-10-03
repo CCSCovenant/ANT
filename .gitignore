@@ -4,6 +4,7 @@ data/
 checkpoints/
 text_cache/
 wandb/
+tmp_scripts/
 # 常见缓存/编译产物
 __pycache__/
 *.pyc
