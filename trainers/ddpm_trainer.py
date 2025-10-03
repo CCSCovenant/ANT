@@ -100,8 +100,11 @@ class DDPMTrainer(object):
         #nvtx.push_range("Diffusion Step", color="yellow")
         x_start = motions
         B, T = x_start.shape[:2]
-        cur_len = torch.LongTensor([min(T, m) for m in m_lens]).to(self.device)
-        self.src_mask = self.generate_src_mask(T, cur_len).to(x_start.device)
+        #cur_len = torch.LongTensor([min(T, m_len) for m_len in  m_lens]).to(self.device)
+        cur_len = torch.as_tensor(m_lens, device=x_start.device).clamp_max(T).long()
+
+        #self.src_mask = self.generate_src_mask(T, cur_len).to(x_start.device)
+        self.src_mask = self.generate_src_mask(T, cur_len, device=x_start.device)
         real_noise = torch.randn_like(x_start)
         t = torch.randint(0, self.diffusion_steps, (B,), device=self.device)
         self.timesteps = t
@@ -157,13 +160,20 @@ class DDPMTrainer(object):
 
         return loss_logs
     
+    def generate_src_mask(self, T, length, device):
+        # 中文注释【性能优化】：矢量化构造 mask；mask[b, t] = 1 若 t < length[b]，否则 0；避免 O(B*T) 的 Python 循环
+        ar = torch.arange(T, device=device)              # [T]
+        mask = ar.unsqueeze(0) < length.unsqueeze(1)     # [B, T] bool
+        return mask.float()
+    '''
     def generate_src_mask(self, T, length):
         B = len(length)
         src_mask = torch.ones(B, T)
         for i in range(B):
-            src_mask[i, length[i]:] = 0
+            for j in range(length[i], T):
+                src_mask[i, j] = 0
         return src_mask
-
+    '''
     def train_mode(self):
         self.model.train()
         if self.model_ema:

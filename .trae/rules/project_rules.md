@@ -1,0 +1,4 @@
+本项目的环境为 conda环境 openANT_test 任何出现依赖问题必须先检查是否激活了openANT_test:
+conda activate openANT_test
+如果碰到已经激活了openANT_test但是出现的依赖问题直接报错交给人类处理
+ 

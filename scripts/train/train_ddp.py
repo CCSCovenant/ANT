@@ -24,9 +24,15 @@ from accelerate.utils import set_seed
 from accelerate import Accelerator
 # 使用 DistributedDataParallel 进行单机多卡训练
 import torch
-
+from accelerate import Accelerator, DistributedDataParallelKwargs
 if __name__ == '__main__':
-    accelerator = Accelerator()
+    ddp_kwargs = DistributedDataParallelKwargs(
+            static_graph=True,                 # 中文注释：静态图时能显著降低重建桶和参数跟踪的开销
+            gradient_as_bucket_view=True,      # 中文注释：减少内存复制，加速梯度聚合
+            bucket_cap_mb=64,                  # 中文注释：可按模型大小与硬件带宽调参（32~128均可尝试）
+            broadcast_buffers=False            # 中文注释：通常无需广播 buffers，减少不必要通信
+        )    
+    accelerator = Accelerator(mixed_precision="bf16", kwargs_handlers=[ddp_kwargs])
     
     parser = TrainOptions()
     opt = parser.parse(accelerator)
@@ -57,7 +63,8 @@ if __name__ == '__main__':
         print('EMA alpha:',alpha)
         model_ema = ExponentialMovingAverage(encoder, decay=1.0 - alpha)
     accelerator.print('Finish building Model.\n')
-
+    accelerator.print('Model trainable parameters:', sum(p.numel() for p in encoder.parameters() if p.requires_grad))
+    accelerator.print('Model total parameters:', sum(p.numel() for p in encoder.parameters()))
     trainer = DDPMTrainer(opt, encoder,accelerator, model_ema)
 
     trainer.train(train_datasetloader)

@@ -24,21 +24,38 @@ class T5TextEmbedder(nn.Module):
         self.tokenizer = T5Tokenizer.from_pretrained(pretrained_path)
         self.max_length = max_length
 
-    def forward(self, caption, text_input_ids=None, attention_mask=None, max_length=None):
-        # ... (forward 函数保持不变)
-        max_len = max_length if max_length is not None else self.max_length
+    def forward(
+        self, caption, text_input_ids=None, attention_mask=None, max_length=None
+    ):
+        if max_length is None:
+            max_length = self.max_length
+
         if text_input_ids is None or attention_mask is None:
-            text_inputs = self.tokenizer(
-                caption, return_tensors="pt", add_special_tokens=True,
-                max_length=max_len, padding="max_length", truncation=True,
-            )
+            if max_length is not None:
+                text_inputs = self.tokenizer(
+                    caption,
+                    return_tensors="pt",
+                    add_special_tokens=True,
+                    max_length=max_length,
+                    padding="max_length",
+                    truncation=True,
+                )
+            else:
+                text_inputs = self.tokenizer(
+                    caption,
+                    padding=True,  # 启用填充
+                    truncation=True,  # 启用截断
+                    max_length=self.max_length,  # 设置最大长度
+                    return_tensors="pt"  # 返回 PyTorch 张量
+                )
             text_input_ids = text_inputs.input_ids
             attention_mask = text_inputs.attention_mask
-        device = self.model.device
-        text_input_ids = text_input_ids.to(device)
-        attention_mask = attention_mask.to(device)
+        text_input_ids = text_input_ids.to(self.model.device)
+        attention_mask = attention_mask.to(self.model.device)
         outputs = self.model(text_input_ids, attention_mask=attention_mask)
-        return outputs.last_hidden_state
+
+        embeddings = outputs.last_hidden_state
+        return embeddings
 
 def get_text_encoder(config, device='cuda'):
     """

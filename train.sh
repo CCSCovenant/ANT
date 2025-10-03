@@ -1,1 +1,1 @@
-accelerate launch --config_file 1gpu.yaml --gpu_ids 0 -m scripts.train.train --abstractor --use_text_cache --model-ema --num_train_steps 150000 --name ant_t2m_2
+accelerate launch --config_file 1gpu.yaml --gpu_ids 6 -m scripts.train.train --abstractor --use_text_cache --model-ema --num_train_steps 150000 --name ant_t2m_10_02

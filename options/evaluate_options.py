@@ -31,7 +31,7 @@ class TestOptions():
         self.parser.add_argument('--mm_num_repeats', type=int, default=30, help='Number of generation rounds for each text description when evaluating multimodality')
         self.parser.add_argument('--mm_num_times', type=int, default=10, help='')
         self.parser.add_argument("--evl_mode", type=str, default='fid',help='option file path for loading model')
-        self.parser.add_argument('--cfg_scale',type=float, default=3.5, help='')
+        self.parser.add_argument('--cfg_scale',type=float, default=2.5, help='')
 
 
     

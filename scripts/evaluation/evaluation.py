@@ -22,6 +22,10 @@ if __name__ == '__main__':
     parser = TestOptions()
     opt = parser.parse()
     set_seed(0)
+    # 兼容旧 opt.txt：若未定义 use_text_cache，则默认关闭以避免评估时报错
+    if not hasattr(opt, 'use_text_cache'):
+        opt.use_text_cache = False
+
     #opt.eval_mode = 'mmd'
     device_id = opt.gpu_id
     device = torch.device('cuda:%d' % device_id if torch.cuda.is_available() else 'cpu')

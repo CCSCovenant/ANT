@@ -1,0 +1,1702 @@
+{
+  "device_old": "cuda:0",
+  "device_new": "cuda:1",
+  "batch_size": 1,
+  "nframes": 64,
+  "num_tokens_raw": 77,
+  "num_latents_cond": 77,
+  "text": "a person walks forward slowly",
+  "sections": {
+    "text_encoder_raw": {
+      "l2": 0.0002932786592282355,
+      "cosine": 1.000002384185791,
+      "mean_abs": 5.282897177494306e-07,
+      "a_digest": {
+        "shape": [
+          1,
+          77,
+          2048
+        ],
+        "dtype": "torch.float32",
+        "mean": 0.0007953593740239739,
+        "std": 0.09511290490627289,
+        "min": -0.4539356827735901,
+        "max": 0.4293365478515625
+      },
+      "b_digest": {
+        "shape": [
+          1,
+          77,
+          2048
+        ],
+        "dtype": "torch.float32",
+        "mean": 0.0007953433669172227,
+        "std": 0.09511277079582214,
+        "min": -0.45393550395965576,
+        "max": 0.4293346405029297
+      }
+    },
+    "connector_ella_vs_sta": {
+      "l2": 0.0,
+      "cosine": 1.0000003576278687,
+      "mean_abs": 0.0,
+      "a_digest": {
+        "shape": [
+          1,
+          77,
+          256
+        ],
+        "dtype": "torch.float32",
+        "mean": -0.03872402012348175,
+        "std": 5.233691215515137,
+        "min": -45.538883209228516,
+        "max": 29.497215270996094
+      },
+      "b_digest": {
+        "shape": [
+          1,
+          77,
+          256
+        ],
+        "dtype": "torch.float32",
+        "mean": -0.03872402012348175,
+        "std": 5.233691215515137,
+        "min": -45.538883209228516,
+        "max": 29.497215270996094
+      }
+    },
+    "per_layer": {
+      "PerceiverResampler": [
+        {
+          "cls": "PerceiverResampler",
+          "name_old": "ella_model.connector",
+          "name_new": "sta_model.connector",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              77,
+              256
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.02247384563088417,
+            "std": 0.6541230082511902,
+            "min": -4.058053970336914,
+            "max": 1.638040542602539
+          },
+          "new_out": {
+            "shape": [
+              1,
+              77,
+              256
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.02247384563088417,
+            "std": 0.6541230082511902,
+            "min": -4.058053970336914,
+            "max": 1.638040542602539
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000001192092896,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                77,
+                256
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.02247384563088417,
+              "std": 0.6541230082511902,
+              "min": -4.058053970336914,
+              "max": 1.638040542602539
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                77,
+                256
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.02247384563088417,
+              "std": 0.6541230082511902,
+              "min": -4.058053970336914,
+              "max": 1.638040542602539
+            }
+          }
+        }
+      ],
+      "ResidualCrossAttentionLayer": [
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.0.0.cross_attn",
+          "name_new": "unet.downs.0.0.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.007037204224616289,
+            "std": 1.0034632682800293,
+            "min": -4.30839204788208,
+            "max": 4.324112415313721
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.007037204224616289,
+            "std": 1.0034632682800293,
+            "min": -4.30839204788208,
+            "max": 4.324112415313721
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.007037204224616289,
+              "std": 1.0034632682800293,
+              "min": -4.30839204788208,
+              "max": 4.324112415313721
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.007037204224616289,
+              "std": 1.0034632682800293,
+              "min": -4.30839204788208,
+              "max": 4.324112415313721
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.0.1.cross_attn",
+          "name_new": "unet.downs.0.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.007359518203884363,
+            "std": 1.0011377334594727,
+            "min": -4.2289137840271,
+            "max": 4.605047702789307
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.007359518203884363,
+            "std": 1.0011377334594727,
+            "min": -4.2289137840271,
+            "max": 4.605047702789307
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000004768371582,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.007359518203884363,
+              "std": 1.0011377334594727,
+              "min": -4.2289137840271,
+              "max": 4.605047702789307
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.007359518203884363,
+              "std": 1.0011377334594727,
+              "min": -4.2289137840271,
+              "max": 4.605047702789307
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.1.0.cross_attn",
+          "name_new": "unet.downs.1.0.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.009411303326487541,
+            "std": 1.0025514364242554,
+            "min": -4.464443683624268,
+            "max": 4.16129207611084
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.009411303326487541,
+            "std": 1.0025514364242554,
+            "min": -4.464443683624268,
+            "max": 4.16129207611084
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.000000238418579,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.009411303326487541,
+              "std": 1.0025514364242554,
+              "min": -4.464443683624268,
+              "max": 4.16129207611084
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.009411303326487541,
+              "std": 1.0025514364242554,
+              "min": -4.464443683624268,
+              "max": 4.16129207611084
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.1.1.cross_attn",
+          "name_new": "unet.downs.1.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0005290831904858351,
+            "std": 1.0005842447280884,
+            "min": -4.215536117553711,
+            "max": 4.374295234680176
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0005290831904858351,
+            "std": 1.0005842447280884,
+            "min": -4.215536117553711,
+            "max": 4.374295234680176
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 0.9999994039535522,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0005290831904858351,
+              "std": 1.0005842447280884,
+              "min": -4.215536117553711,
+              "max": 4.374295234680176
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0005290831904858351,
+              "std": 1.0005842447280884,
+              "min": -4.215536117553711,
+              "max": 4.374295234680176
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.2.0.cross_attn",
+          "name_new": "unet.downs.2.0.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005665307864546776,
+            "std": 1.0009434223175049,
+            "min": -4.084960460662842,
+            "max": 4.20911979675293
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005665307864546776,
+            "std": 1.0009434223175049,
+            "min": -4.084960460662842,
+            "max": 4.20911979675293
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000004768371582,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005665307864546776,
+              "std": 1.0009434223175049,
+              "min": -4.084960460662842,
+              "max": 4.20911979675293
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005665307864546776,
+              "std": 1.0009434223175049,
+              "min": -4.084960460662842,
+              "max": 4.20911979675293
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.2.1.cross_attn",
+          "name_new": "unet.downs.2.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.012113446369767189,
+            "std": 1.0073508024215698,
+            "min": -4.101861000061035,
+            "max": 4.05724573135376
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.012113446369767189,
+            "std": 1.0073508024215698,
+            "min": -4.101861000061035,
+            "max": 4.05724573135376
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.012113446369767189,
+              "std": 1.0073508024215698,
+              "min": -4.101861000061035,
+              "max": 4.05724573135376
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.012113446369767189,
+              "std": 1.0073508024215698,
+              "min": -4.101861000061035,
+              "max": 4.05724573135376
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.3.0.cross_attn",
+          "name_new": "unet.downs.3.0.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.01067623496055603,
+            "std": 1.006497859954834,
+            "min": -4.47667121887207,
+            "max": 4.085198879241943
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.01067623496055603,
+            "std": 1.006497859954834,
+            "min": -4.47667121887207,
+            "max": 4.085198879241943
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000001192092896,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.01067623496055603,
+              "std": 1.006497859954834,
+              "min": -4.47667121887207,
+              "max": 4.085198879241943
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.01067623496055603,
+              "std": 1.006497859954834,
+              "min": -4.47667121887207,
+              "max": 4.085198879241943
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.downs.3.1.cross_attn",
+          "name_new": "unet.downs.3.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.0015956475399434566,
+            "std": 0.9977242350578308,
+            "min": -4.336165904998779,
+            "max": 4.541697025299072
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.0015956475399434566,
+            "std": 0.9977242350578308,
+            "min": -4.336165904998779,
+            "max": 4.541697025299072
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000001192092896,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.0015956475399434566,
+              "std": 0.9977242350578308,
+              "min": -4.336165904998779,
+              "max": 4.541697025299072
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.0015956475399434566,
+              "std": 0.9977242350578308,
+              "min": -4.336165904998779,
+              "max": 4.541697025299072
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.0.1.cross_attn",
+          "name_new": "unet.ups.0.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0009056946728378534,
+            "std": 1.0034205913543701,
+            "min": -4.226314067840576,
+            "max": 4.295565605163574
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0009056946728378534,
+            "std": 1.0034205913543701,
+            "min": -4.226314067840576,
+            "max": 4.295565605163574
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000001192092896,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0009056946728378534,
+              "std": 1.0034205913543701,
+              "min": -4.226314067840576,
+              "max": 4.295565605163574
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0009056946728378534,
+              "std": 1.0034205913543701,
+              "min": -4.226314067840576,
+              "max": 4.295565605163574
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.0.2.cross_attn",
+          "name_new": "unet.ups.0.2.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005449599586427212,
+            "std": 1.0031776428222656,
+            "min": -3.9165306091308594,
+            "max": 4.512928485870361
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005449599586427212,
+            "std": 1.0031776428222656,
+            "min": -3.9165306091308594,
+            "max": 4.512928485870361
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005449599586427212,
+              "std": 1.0031776428222656,
+              "min": -3.9165306091308594,
+              "max": 4.512928485870361
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005449599586427212,
+              "std": 1.0031776428222656,
+              "min": -3.9165306091308594,
+              "max": 4.512928485870361
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.1.1.cross_attn",
+          "name_new": "unet.ups.1.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.0008289273828268051,
+            "std": 1.0045521259307861,
+            "min": -4.097433567047119,
+            "max": 4.634264945983887
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.0008289273828268051,
+            "std": 1.0045521259307861,
+            "min": -4.097433567047119,
+            "max": 4.634264945983887
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000004768371582,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.0008289273828268051,
+              "std": 1.0045521259307861,
+              "min": -4.097433567047119,
+              "max": 4.634264945983887
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.0008289273828268051,
+              "std": 1.0045521259307861,
+              "min": -4.097433567047119,
+              "max": 4.634264945983887
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.1.2.cross_attn",
+          "name_new": "unet.ups.1.2.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005152595229446888,
+            "std": 1.0018514394760132,
+            "min": -4.1817145347595215,
+            "max": 4.682895183563232
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005152595229446888,
+            "std": 1.0018514394760132,
+            "min": -4.1817145347595215,
+            "max": 4.682895183563232
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 0.9999998807907104,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005152595229446888,
+              "std": 1.0018514394760132,
+              "min": -4.1817145347595215,
+              "max": 4.682895183563232
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005152595229446888,
+              "std": 1.0018514394760132,
+              "min": -4.1817145347595215,
+              "max": 4.682895183563232
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.2.1.cross_attn",
+          "name_new": "unet.ups.2.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.005637158174067736,
+            "std": 1.0054501295089722,
+            "min": -3.89955472946167,
+            "max": 4.075549602508545
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.005637158174067736,
+            "std": 1.0054501295089722,
+            "min": -3.89955472946167,
+            "max": 4.075549602508545
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 0.9999998807907104,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.005637158174067736,
+              "std": 1.0054501295089722,
+              "min": -3.89955472946167,
+              "max": 4.075549602508545
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.005637158174067736,
+              "std": 1.0054501295089722,
+              "min": -3.89955472946167,
+              "max": 4.075549602508545
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.2.2.cross_attn",
+          "name_new": "unet.ups.2.2.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.001126923132687807,
+            "std": 1.0038665533065796,
+            "min": -4.129089832305908,
+            "max": 4.109068393707275
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.001126923132687807,
+            "std": 1.0038665533065796,
+            "min": -4.129089832305908,
+            "max": 4.109068393707275
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000007152557373,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.001126923132687807,
+              "std": 1.0038665533065796,
+              "min": -4.129089832305908,
+              "max": 4.109068393707275
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.001126923132687807,
+              "std": 1.0038665533065796,
+              "min": -4.129089832305908,
+              "max": 4.109068393707275
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.3.1.cross_attn",
+          "name_new": "unet.ups.3.1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.000415364105720073,
+            "std": 0.9972009658813477,
+            "min": -4.349703788757324,
+            "max": 4.332730770111084
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.000415364105720073,
+            "std": 0.9972009658813477,
+            "min": -4.349703788757324,
+            "max": 4.332730770111084
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 0.9999998807907104,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.000415364105720073,
+              "std": 0.9972009658813477,
+              "min": -4.349703788757324,
+              "max": 4.332730770111084
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.000415364105720073,
+              "std": 0.9972009658813477,
+              "min": -4.349703788757324,
+              "max": 4.332730770111084
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.ups.3.2.cross_attn",
+          "name_new": "unet.ups.3.2.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0043190764263272285,
+            "std": 1.0047870874404907,
+            "min": -4.1482977867126465,
+            "max": 4.03641939163208
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0043190764263272285,
+            "std": 1.0047870874404907,
+            "min": -4.1482977867126465,
+            "max": 4.03641939163208
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000011920928955,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0043190764263272285,
+              "std": 1.0047870874404907,
+              "min": -4.1482977867126465,
+              "max": 4.03641939163208
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0043190764263272285,
+              "std": 1.0047870874404907,
+              "min": -4.1482977867126465,
+              "max": 4.03641939163208
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.mid_block1.cross_attn",
+          "name_new": "unet.mid_block1.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.014324000105261803,
+            "std": 1.0038472414016724,
+            "min": -4.315196990966797,
+            "max": 4.122063159942627
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.014324000105261803,
+            "std": 1.0038472414016724,
+            "min": -4.315196990966797,
+            "max": 4.122063159942627
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000007152557373,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.014324000105261803,
+              "std": 1.0038472414016724,
+              "min": -4.315196990966797,
+              "max": 4.122063159942627
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.014324000105261803,
+              "std": 1.0038472414016724,
+              "min": -4.315196990966797,
+              "max": 4.122063159942627
+            }
+          }
+        },
+        {
+          "cls": "ResidualCrossAttentionLayer",
+          "name_old": "unet.mid_block2.cross_attn",
+          "name_new": "unet.mid_block2.cross_attn",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005470179952681065,
+            "std": 1.000765085220337,
+            "min": -4.24436092376709,
+            "max": 4.972588062286377
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.005470179952681065,
+            "std": 1.000765085220337,
+            "min": -4.24436092376709,
+            "max": 4.972588062286377
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005470179952681065,
+              "std": 1.000765085220337,
+              "min": -4.24436092376709,
+              "max": 4.972588062286377
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.005470179952681065,
+              "std": 1.000765085220337,
+              "min": -4.24436092376709,
+              "max": 4.972588062286377
+            }
+          }
+        }
+      ],
+      "Downsample1d": [
+        {
+          "cls": "Downsample1d",
+          "name_old": "unet.downs.0.2",
+          "name_new": "unet.downs.0.2",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.014173334464430809,
+            "std": 0.7291759252548218,
+            "min": -3.096771240234375,
+            "max": 2.9880146980285645
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.014173334464430809,
+            "std": 0.7291759252548218,
+            "min": -3.096771240234375,
+            "max": 2.9880146980285645
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.000000238418579,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.014173334464430809,
+              "std": 0.7291759252548218,
+              "min": -3.096771240234375,
+              "max": 2.9880146980285645
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.014173334464430809,
+              "std": 0.7291759252548218,
+              "min": -3.096771240234375,
+              "max": 2.9880146980285645
+            }
+          }
+        },
+        {
+          "cls": "Downsample1d",
+          "name_old": "unet.downs.1.2",
+          "name_new": "unet.downs.1.2",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.00026189477648586035,
+            "std": 0.6771073341369629,
+            "min": -3.9699740409851074,
+            "max": 2.834871530532837
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.00026189477648586035,
+            "std": 0.6771073341369629,
+            "min": -3.9699740409851074,
+            "max": 2.834871530532837
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.000000238418579,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.00026189477648586035,
+              "std": 0.6771073341369629,
+              "min": -3.9699740409851074,
+              "max": 2.834871530532837
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.00026189477648586035,
+              "std": 0.6771073341369629,
+              "min": -3.9699740409851074,
+              "max": 2.834871530532837
+            }
+          }
+        },
+        {
+          "cls": "Downsample1d",
+          "name_old": "unet.downs.2.2",
+          "name_new": "unet.downs.2.2",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.012496807612478733,
+            "std": 0.6735096573829651,
+            "min": -2.60510516166687,
+            "max": 2.9999821186065674
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.012496807612478733,
+            "std": 0.6735096573829651,
+            "min": -2.60510516166687,
+            "max": 2.9999821186065674
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.012496807612478733,
+              "std": 0.6735096573829651,
+              "min": -2.60510516166687,
+              "max": 2.9999821186065674
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.012496807612478733,
+              "std": 0.6735096573829651,
+              "min": -2.60510516166687,
+              "max": 2.9999821186065674
+            }
+          }
+        },
+        {
+          "cls": "Downsample1d",
+          "name_old": "unet.downs.3.2",
+          "name_new": "unet.downs.3.2",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.007972916588187218,
+            "std": 0.6504553556442261,
+            "min": -3.2995800971984863,
+            "max": 2.5162620544433594
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              32
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.007972916588187218,
+            "std": 0.6504553556442261,
+            "min": -3.2995800971984863,
+            "max": 2.5162620544433594
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.007972916588187218,
+              "std": 0.6504553556442261,
+              "min": -3.2995800971984863,
+              "max": 2.5162620544433594
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                32
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.007972916588187218,
+              "std": 0.6504553556442261,
+              "min": -3.2995800971984863,
+              "max": 2.5162620544433594
+            }
+          }
+        }
+      ],
+      "Upsample1d": [
+        {
+          "cls": "Upsample1d",
+          "name_old": "unet.ups.0.0",
+          "name_new": "unet.ups.0.0",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.003146422328427434,
+            "std": 0.4613766372203827,
+            "min": -2.35042667388916,
+            "max": 1.8434693813323975
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.003146422328427434,
+            "std": 0.4613766372203827,
+            "min": -2.35042667388916,
+            "max": 1.8434693813323975
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.000000238418579,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.003146422328427434,
+              "std": 0.4613766372203827,
+              "min": -2.35042667388916,
+              "max": 1.8434693813323975
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.003146422328427434,
+              "std": 0.4613766372203827,
+              "min": -2.35042667388916,
+              "max": 1.8434693813323975
+            }
+          }
+        },
+        {
+          "cls": "Upsample1d",
+          "name_old": "unet.ups.1.0",
+          "name_new": "unet.ups.1.0",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.003168543567880988,
+            "std": 0.4678792953491211,
+            "min": -2.060030698776245,
+            "max": 1.8695225715637207
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.003168543567880988,
+            "std": 0.4678792953491211,
+            "min": -2.060030698776245,
+            "max": 1.8695225715637207
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 0.9999998211860657,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.003168543567880988,
+              "std": 0.4678792953491211,
+              "min": -2.060030698776245,
+              "max": 1.8695225715637207
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.003168543567880988,
+              "std": 0.4678792953491211,
+              "min": -2.060030698776245,
+              "max": 1.8695225715637207
+            }
+          }
+        },
+        {
+          "cls": "Upsample1d",
+          "name_old": "unet.ups.2.0",
+          "name_new": "unet.ups.2.0",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.002557773143053055,
+            "std": 0.521243691444397,
+            "min": -2.6419894695281982,
+            "max": 2.5077834129333496
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": -0.002557773143053055,
+            "std": 0.521243691444397,
+            "min": -2.6419894695281982,
+            "max": 2.5077834129333496
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 0.9999998211860657,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.002557773143053055,
+              "std": 0.521243691444397,
+              "min": -2.6419894695281982,
+              "max": 2.5077834129333496
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": -0.002557773143053055,
+              "std": 0.521243691444397,
+              "min": -2.6419894695281982,
+              "max": 2.5077834129333496
+            }
+          }
+        },
+        {
+          "cls": "Upsample1d",
+          "name_old": "unet.ups.3.0",
+          "name_new": "unet.ups.3.0",
+          "error": null,
+          "old_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0019123125821352005,
+            "std": 0.5686975717544556,
+            "min": -2.331301689147949,
+            "max": 2.5062386989593506
+          },
+          "new_out": {
+            "shape": [
+              1,
+              1024,
+              64
+            ],
+            "dtype": "torch.float32",
+            "mean": 0.0019123125821352005,
+            "std": 0.5686975717544556,
+            "min": -2.331301689147949,
+            "max": 2.5062386989593506
+          },
+          "compare": {
+            "l2": 0.0,
+            "cosine": 1.0000004768371582,
+            "mean_abs": 0.0,
+            "a_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0019123125821352005,
+              "std": 0.5686975717544556,
+              "min": -2.331301689147949,
+              "max": 2.5062386989593506
+            },
+            "b_digest": {
+              "shape": [
+                1,
+                1024,
+                64
+              ],
+              "dtype": "torch.float32",
+              "mean": 0.0019123125821352005,
+              "std": 0.5686975717544556,
+              "min": -2.331301689147949,
+              "max": 2.5062386989593506
+            }
+          }
+        }
+      ],
+      "ResidualBlock": []
+    },
+    "unet_top": {
+      "l2": 178.32913208007812,
+      "cosine": -0.2782677412033081,
+      "mean_abs": 0.8555028438568115,
+      "a_digest": {
+        "shape": [
+          1,
+          263,
+          64
+        ],
+        "dtype": "torch.float32",
+        "mean": 0.027058785781264305,
+        "std": 0.4751562476158142,
+        "min": -3.4843714237213135,
+        "max": 3.942002058029175
+      },
+      "b_digest": {
+        "shape": [
+          1,
+          263,
+          64
+        ],
+        "dtype": "torch.float32",
+        "mean": -0.07023419439792633,
+        "std": 1.1617772579193115,
+        "min": -20.883955001831055,
+        "max": 7.359145164489746
+      }
+    }
+  }
+}

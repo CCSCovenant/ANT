@@ -113,7 +113,7 @@ def get_dataset_loader(opt, batch_size, mode='eval', split='test', accelerator=N
         dataset     = dataset,
         batch_size  = batch_size,
         shuffle     = True,
-        num_workers = 32,
+        num_workers = 64,
         drop_last   = True,
         pin_memory=True,
         persistent_workers=True,

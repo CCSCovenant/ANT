@@ -92,9 +92,11 @@ class DDPMTrainer(object):
 
         x_start = motions
         B, T = x_start.shape[:2]
-        cur_len = torch.LongTensor([min(T, m_len) for m_len in  m_lens]).to(self.device)
-        self.src_mask = self.generate_src_mask(T, cur_len).to(x_start.device)
+        #cur_len = torch.LongTensor([min(T, m_len) for m_len in  m_lens]).to(self.device)
+        cur_len = torch.as_tensor(m_lens, device=x_start.device).clamp_max(T).long()
 
+        #self.src_mask = self.generate_src_mask(T, cur_len).to(x_start.device)
+        self.src_mask = self.generate_src_mask(T, cur_len, device=x_start.device)
         # 1. Sample noise that we'll add to the motion
         real_noise = torch.randn_like(x_start)
 
@@ -148,6 +150,12 @@ class DDPMTrainer(object):
 
         return loss_logs
     
+    def generate_src_mask(self, T, length, device):
+        # 中文注释【性能优化】：矢量化构造 mask；mask[b, t] = 1 若 t < length[b]，否则 0；避免 O(B*T) 的 Python 循环
+        ar = torch.arange(T, device=device)              # [T]
+        mask = ar.unsqueeze(0) < length.unsqueeze(1)     # [B, T] bool
+        return mask.float()
+    '''
     def generate_src_mask(self, T, length):
         B = len(length)
         src_mask = torch.ones(B, T)
@@ -155,7 +163,7 @@ class DDPMTrainer(object):
             for j in range(length[i], T):
                 src_mask[i, j] = 0
         return src_mask
-
+    '''
     def train_mode(self):
         self.model.train()
         if self.model_ema:
@@ -262,12 +270,10 @@ class DDPMTrainer(object):
         self.dataset = train_loader.dataset
         
         # 中文注释：将损失函数与模型/优化器/数据加载器统一放到各自 rank 的设备与进程上
-        self.mse_criterion.to(self.device)
-        self.model, self.optimizer, train_loader = self.accelerator.prepare(
-            self.model, self.optimizer, train_loader
+        self.model, self.optimizer, train_loader,self.model_ema,self.mse_criterion= self.accelerator.prepare(
+            self.model, self.optimizer, train_loader,self.model_ema,self.mse_criterion
         )
-        if self.model_ema is not None:
-            self.model_ema = self.accelerator.prepare(self.model_ema)
+
 
         num_epochs = (self.opt.num_train_steps-it)//len(train_loader)  + 1 
         if self.accelerator.is_main_process:

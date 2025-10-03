@@ -1,6 +1,4 @@
 import torch
-from .ema import ExponentialMovingAverage
-
 def load_model_weights(model, ckpt_path, use_ema=True, device=None):
     """
     Load weights of a model from a checkpoint file.
@@ -19,75 +17,72 @@ def load_model_weights(model, ckpt_path, use_ema=True, device=None):
     elif isinstance(device, str):
         device = torch.device(device)
 
-    # 改动2（中文注释）：严格按目标 device 加载权重，避免跨 GPU id 导致的 map_location 不一致
+    # 严格按目标 device 加载权重
     checkpoint = torch.load(ckpt_path, map_location=device)
 
     total_iter = checkpoint.get('total_it', 0)
 
-    # 改动3（中文注释）：修复原逻辑在加载 EMA 权重时对 model 的本地重新赋值，导致调用方模型未真正载入参数的问题。
-    # 现在无论 EMA 的 state_dict 形态如何，均“提取并对齐”权重后，直接 load 到传入的原始 model 上。
-    if use_ema and ('model_ema' in checkpoint):
+    # 严格加载：仅接受指定键，必须完全匹配
+    if use_ema:
+        if 'model_ema' not in checkpoint:
+            raise KeyError("Checkpoint missing 'model_ema' while use_ema=True")
         ema_state = checkpoint['model_ema']
-
-        # 处理 timm/swa_utils 风格的 EMA：包含 'n_averaged' 与 'module.' 前缀
-        # 情况A：字典里既有参数（带 module. 前缀），也可能含有 n_averaged 等统计量
-        if any(k.startswith('module.') for k in ema_state.keys()):
-            # 去掉 'module.' 前缀，仅保留与模型参数名匹配的键值
-            ema_weights = {k[len('module.'):] : v for k, v in ema_state.items() if k.startswith('module.')}
-            # 中文注释：严格加载到原 model；strict=False 以兼容轻微的键名差异（比如未用到参数）
-            missing, unexpected = model.load_state_dict(ema_weights, strict=False)
-            print(f"\nLoading EMA(model.module) weights from {ckpt_path} with {total_iter} iterations")
+        if isinstance(ema_state, dict) and 'state_dict' in ema_state:
+            ema_sd = ema_state['state_dict']
+        elif isinstance(ema_state, dict):
+            ema_sd = ema_state
         else:
-            # 情况B：直接是与模型同名的参数字典（无 module. 前缀），或其他简单形式
-            # 同时过滤可能存在的统计项如 n_averaged
-            ema_weights = {k: v for k, v in ema_state.items() if k in model.state_dict()}
-            missing, unexpected = model.load_state_dict(ema_weights, strict=False)
-            print(f"\nLoading EMA model from {ckpt_path} with {total_iter} iterations")
-
-        if missing:
-            print(f"[load_model_weights][EMA] missing keys: {len(missing)} (showing first 10) -> {missing[:10]}")
-        if unexpected:
-            print(f"[load_model_weights][EMA] unexpected keys: {len(unexpected)} (showing first 10) -> {unexpected[:10]}")
+            raise TypeError("'model_ema' must be a dict or contain a 'state_dict' dict")
+        missing, unexpected = model.load_state_dict(ema_sd, strict=True)
+        if missing or unexpected:
+            raise RuntimeError(f"Strict EMA load failed: missing={len(missing)} unexpected={len(unexpected)}")
+        print(f"\nLoaded EMA weights strictly from {ckpt_path} with {total_iter} iterations")
     else:
-        # 回退：加载常规 non-EMA 权重（多数工程保存为 'encoder' 或类似键）
-        encoder_state = checkpoint.get('encoder', None)
-        if encoder_state is None:
-            raise KeyError("Checkpoint does not contain 'encoder' or 'model_ema' keys.")
-        missing, unexpected = model.load_state_dict(encoder_state, strict=False)
-        print(f"\nLoading model from {ckpt_path} with {total_iter} iterations")
-        if missing:
-            print(f"[load_model_weights][RAW] missing keys: {len(missing)} (showing first 10) -> {missing[:10]}")
-        if unexpected:
-            print(f"[load_model_weights][RAW] unexpected keys: {len(unexpected)} (showing first 10) -> {unexpected[:10]}")
+        if 'encoder' not in checkpoint:
+            raise KeyError("Checkpoint missing 'encoder' while use_ema=False")
+        encoder_state = checkpoint['encoder']
+        missing, unexpected = model.load_state_dict(encoder_state, strict=True)
+        if missing or unexpected:
+            raise RuntimeError(f"Strict RAW load failed: missing={len(missing)} unexpected={len(unexpected)}")
+        print(f"\nLoaded RAW weights strictly from {ckpt_path} with {total_iter} iterations")
 
     return total_iter
 
 
 def load_lora_weight(model, lora_path, use_ema, device='cuda'):
-    # 改动4（中文注释）：同样规范 map_location 逻辑，且不在此处引入 ExponentialMovingAverage 包装，直接对齐并加载。
+    # 严格按目标 device 加载权重
     if isinstance(device, str):
         device = torch.device(device)
     checkpoint = torch.load(lora_path, map_location=device)
 
     total_iter = checkpoint.get('total_it', 0)
 
-    if use_ema and ('model_ema' in checkpoint):
+    if use_ema:
+        if 'model_ema' not in checkpoint:
+            raise KeyError("LoRA checkpoint missing 'model_ema' while use_ema=True")
         ema_state = checkpoint['model_ema']
-        if any(k.startswith('module.') for k in ema_state.keys()):
-            ema_weights = {k[len('module.'):] : v for k, v in ema_state.items() if k.startswith('module.')}
+        if isinstance(ema_state, dict) and 'state_dict' in ema_state:
+            ema_sd = ema_state['state_dict']
+        elif isinstance(ema_state, dict):
+            ema_sd = ema_state
         else:
-            ema_weights = {k: v for k, v in ema_state.items() if k in model.state_dict()}
-        missing, unexpected = model.load_state_dict(ema_weights, strict=False)
-        print(f"\nLoading EMA LoRA model from {lora_path} with {total_iter} iterations")
-        if missing:
-            print(f"[load_lora_weight][EMA] missing keys: {len(missing)} (showing first 10) -> {missing[:10]}")
-        if unexpected:
-            print(f"[load_lora_weight][EMA] unexpected keys: {len(unexpected)} (showing first 10) -> {unexpected[:10]}")
+            raise TypeError("LoRA 'model_ema' must be a dict or contain a 'state_dict' dict")
+        missing, unexpected = model.load_state_dict(ema_sd, strict=True)
+        if missing or unexpected:
+            raise RuntimeError(f"Strict LoRA-EMA load failed: missing={len(missing)} unexpected={len(unexpected)}")
+        print(f"\nLoaded LoRA EMA weights strictly from {lora_path} with {total_iter} iterations")
     else:
+        if 'lora' not in checkpoint:
+            raise KeyError("LoRA checkpoint missing 'lora' while use_ema=False")
+        lora_sd = checkpoint['lora']
+        # 一些 PEFT 实现提供专用入口；保持严格加载要求
         if hasattr(model, 'set_peft_model_state_dict'):
-            model.set_peft_model_state_dict(checkpoint['lora'], strict=False)
+            model.set_peft_model_state_dict(lora_sd, strict=True)
+            print(f"\nLoaded LoRA weights strictly via PEFT from {lora_path} with {total_iter} iterations")
         else:
-            model.load_state_dict(checkpoint['lora'], strict=False)
-        print(f"\nLoading model from {lora_path} with {total_iter} iterations")
+            missing, unexpected = model.load_state_dict(lora_sd, strict=True)
+            if missing or unexpected:
+                raise RuntimeError(f"Strict LoRA load failed: missing={len(missing)} unexpected={len(unexpected)}")
+            print(f"\nLoaded LoRA weights strictly from {lora_path} with {total_iter} iterations")
 
     return total_iter

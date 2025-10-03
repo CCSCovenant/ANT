@@ -1,7 +1,11 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import clip
+# 可选依赖：clip。在非 CLIP 文本编码器场景下无需导入。
+try:
+    import clip  # noqa: F401
+except Exception:
+    clip = None
 #import nvtx
 from .submodules.unet_1d import CondUnet1D
 from .submodules.sta import STA
@@ -57,7 +61,7 @@ class T2MUnet(nn.Module):
         # ---------------- 1.4 STA ---------------- #
         self.use_sta = not getattr(config, "disable_sta", False)
         if self.use_sta:
-            print("Building STA connector.")
+            print(f"Building STA connector,text_encoder_dim:{text_encoder_dim}")
             self.sta_model = STA(
                 # 改动1（中文注释）：当开启 STA 时，输入维度应当为"原始文本编码器维度"，以复现旧逻辑"STA 内部自己做输入映射（proj_in）"。
                 # 之前是传入 text_latent_dim（例如256），会造成与旧权重不一致（例如T5应为2048）。
@@ -66,6 +70,11 @@ class T2MUnet(nn.Module):
                 enable_noise=getattr(config, "enable_noise", False),
                 num_latents=getattr(config, "laten_size", 77),
             )
+            # 改动2（中文注释）：启用 STA 时禁用 text_proj/text_ln 的梯度，避免 DDP 报告未使用参数
+            for p in self.text_proj.parameters():
+                p.requires_grad = False  # 中文注释：text_proj 在 STA 路径中不使用，关闭梯度
+            for p in self.text_ln.parameters():
+                p.requires_grad = False  # 中文注释：text_ln 在 STA 路径中不使用，关闭梯度
 
         # ---------------- 1.5 U-Net ---------------- #
         self.unet = CondUnet1D(
@@ -77,6 +86,7 @@ class T2MUnet(nn.Module):
             zero=True,
             dropout=config.dropout,
             no_eff=config.no_eff,
+            dims = None,
             time_dim=config.time_dim,
         )
 
@@ -177,7 +187,7 @@ class T2MUnet(nn.Module):
         
         # ---------- 4.3 Padding ---------- #
         pad = (16 - (T % 16)) % 16
-        x_pad = F.pad(x, (0, pad), value=0.)
+        x_pad = F.pad(x, (0, pad), value=0)
         #nvtx.pop_range()
         #nvtx.push_range("T2MUnet.forward.unet", color="purple")
         # ---------- 4.4 U-Net ---------- #
@@ -189,7 +199,7 @@ class T2MUnet(nn.Module):
         else:
             #nvtx.push_range("T2MUnet.forward.unet.core", color="purple")
             out_pad = self.unet(
-                x_pad, timesteps, enc_text, cond_indices, return_attn_weights=False
+                x_pad, t=timesteps, cond=enc_text, cond_indices=cond_indices, return_attn_weights=False
             )
             #nvtx.pop_range()
         #nvtx.pop_range()
@@ -228,7 +238,7 @@ class T2MUnet(nn.Module):
 
         cond_indices = self.mask_cond(B, force_mask=False)       # 条件端
         pad = (16 - (T % 16)) % 16
-        x_pad = F.pad(x, (0, pad), value=0.)
+        x_pad = F.pad(x, (0, pad), value=0)
 
         # 拼接条件/无条件
         x_cmb   = torch.cat([x_pad, x_pad], dim=0)

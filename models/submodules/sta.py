@@ -54,7 +54,11 @@ class PerceiverAttentionBlock(nn.Module):
 
         self.ln_1 = AdaLayerNorm(d_model, time_embedding_dim)
         self.ln_2 = AdaLayerNorm(d_model, time_embedding_dim)
-        self.ln_ff = AdaLayerNorm(d_model, time_embedding_dim)
+        # 改动（中文注释）：仅在非抽象器模式下创建 ln_ff；抽象器模式(is_abstractor=True)不会用到该层，避免注册未使用参数导致DDP报错。
+        if not is_abstractor:
+            self.ln_ff = AdaLayerNorm(d_model, time_embedding_dim)
+        else:
+            self.ln_ff = None  # 中文注释：抽象器模式下不创建 ln_ff，从根源移除未使用的可训练参数
 
     def attention(self, q, kv, return_weights=False):
         if return_weights:
@@ -75,7 +79,7 @@ class PerceiverAttentionBlock(nn.Module):
             latents = latents + self.attention(q=normed_latents, kv=kv)
 
         if not self.is_abstractor:
-            latents = latents + self.mlp(self.ln_ff(latents, timestep_embedding))
+            latents = latents + self.mlp(self.ln_ff(latents, timestep_embedding))  # 中文注释：仅非抽象器模式下使用 ln_ff + MLP
 
         if return_weights:
             return latents, weights
@@ -97,6 +101,7 @@ class PerceiverResampler(nn.Module):
 
         if self.input_dim is not None:
             self.proj_in = nn.Linear(input_dim, width)
+            print(f"proj_in shape:hyper:{input_dim},{width}")
 
         self.perceiver_blocks = nn.ModuleList([
             PerceiverAttentionBlock(width, heads, time_embedding_dim=time_embedding_dim,
