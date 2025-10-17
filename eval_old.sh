@@ -1,1 +1,0 @@
-python -m scripts.evaluation.evaluation --opt_path /data/kuimou/openANT/checkpoints/t2m/ant_t2m/opt.txt --which_ckpt cut_latest_120000 --num_inference_steps 10 --gpu_id 0

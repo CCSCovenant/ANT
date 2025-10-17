@@ -13,7 +13,8 @@ from models.gaussian_diffusion_w_footskate_cleanup import DiffusePipeline
 from options.generate_options import GenerateOptions
 from utils.model_load import load_model_weights
 from motion_loader import get_dataset_loader
-from models import build_models
+from utils.model_load import load_model_weights,load_weights_strict_components
+from models.unet_factory import UnetFactory
 
 
 if __name__ == '__main__':
@@ -53,9 +54,10 @@ if __name__ == '__main__':
     print(texts)
     print(opt.device)
     # load model
-    model = build_models(opt)
+    model = UnetFactory.create_unet(opt)
     ckpt_path = pjoin(opt.model_dir, opt.which_ckpt + '.tar')  
-    niter = load_model_weights(model, ckpt_path, use_ema=not opt.no_ema,device=device)
+    load_weights_strict_components(model, ckpt_path, use_ema=not opt.no_ema, device=device)
+
 
     # Create a pipeline for generation in diffusion model framework
     pipeline = DiffusePipeline(

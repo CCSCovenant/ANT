@@ -6,7 +6,7 @@ from datasets import get_dataset
 from models.unet_factory import UnetFactory
 from eval import EvaluatorModelWrapper,evaluation
 from utils.utils import *
-from utils.model_load import load_model_weights
+from utils.model_load import load_model_weights,load_weights_strict_components
 
 from os.path import join as pjoin
 
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     print(opt)
     model = UnetFactory.create_unet(opt)
     ckpt_path = pjoin(opt.model_dir, opt.which_ckpt + '.tar')  
-    load_model_weights(model, ckpt_path, use_ema=not opt.no_ema, device=device)
+    load_weights_strict_components(model, ckpt_path, use_ema=not opt.no_ema, device=device)
 
     # Create a pipeline for generation in diffusion model framework
     pipeline = DiffusePipeline(
@@ -88,3 +88,4 @@ if __name__ == '__main__':
     '''
     print("eval with fid")
     all_metrics = evaluation_fid(eval_wrapper, gt_loader, eval_motion_loaders, log_file, opt.replication_times, opt.diversity_times, opt.mm_num_times, run_mm=True)
+

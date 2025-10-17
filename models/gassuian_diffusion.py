@@ -71,7 +71,6 @@ class DiffusePipeline(object):
             # Use classifier-free guidance if enabled in the model
             if getattr(self.model, 'cond_mask_prob', 0) > 0:
                 model_output = self.model.forward_with_cfg(sample, timestep_batch, text=caption, raw_embeds=raw_embeds,opt=self.opt)
-                print(model_output.shape)
             else:
                 model_output = self.model(sample, timestep_batch, text=caption)
 

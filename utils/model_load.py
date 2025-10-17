@@ -1,4 +1,6 @@
 import torch
+from typing import Dict, List, Tuple, Optional
+
 def load_model_weights(model, ckpt_path, use_ema=True, device=None):
     """
     Load weights of a model from a checkpoint file.
@@ -48,6 +50,70 @@ def load_model_weights(model, ckpt_path, use_ema=True, device=None):
 
     return total_iter
 
+def load_weights_strict_components(model: torch.nn.Module, ckpt_path: str, use_ema: bool, device: torch.device) -> int:
+    """
+    仅严格加载组件级权重：sta_model 和 unet。
+    - 读取 checkpoint 的 state_dict（优先 model_ema，其次 encoder，再次 state_dict）。
+    - 过滤键前缀 "sta_model." 与 "unet."，分别加载到 model.sta_model 与 model.unet（strict=True）。
+    - 返回 niter（若存在则返回，否则 0）。
+    """
+    # 读 ckpt
+    ckpt = torch.load(ckpt_path, map_location=device)
+    if not isinstance(ckpt, dict):
+        raise RuntimeError('Checkpoint format error: not a dict')
+
+    # 选择分支
+    branch = None
+    if use_ema and ('model_ema' in ckpt):
+        branch = ckpt['model_ema']
+    elif 'encoder' in ckpt:
+        branch = ckpt['encoder']
+    elif 'state_dict' in ckpt and isinstance(ckpt['state_dict'], dict):
+        branch = ckpt['state_dict']
+    else:
+        # 直接把 ckpt 当作 state_dict
+        branch = ckpt
+
+    # 统一取出映射
+    if isinstance(branch, dict) and 'state_dict' in branch and isinstance(branch['state_dict'], dict):
+        sd = branch['state_dict']
+    elif isinstance(branch, dict):
+        sd = branch
+    else:
+        raise RuntimeError('Selected branch is not a mapping with state_dict')
+
+    sd = _normalize_sd_keys(sd)
+
+    # 过滤并去掉组件前缀
+    sd_sta = { _strip_prefix(k, 'sta_model.'): v for k, v in sd.items() if k.startswith('sta_model.') }
+    sd_unet = { _strip_prefix(k, 'unet.'): v for k, v in sd.items() if k.startswith('unet.') }
+
+    # 严格加载到组件
+    missing_all = []
+    unexpected_all = []
+    try:
+        missing, unexpected = model.sta_model.load_state_dict(sd_sta, strict=True)
+        missing_all += list(missing)
+        unexpected_all += list(unexpected)
+    except Exception as e:
+        raise RuntimeError(f"Strict load failed for sta_model: {e}")
+
+    try:
+        missing, unexpected = model.unet.load_state_dict(sd_unet, strict=True)
+        missing_all += list(missing)
+        unexpected_all += list(unexpected)
+    except Exception as e:
+        raise RuntimeError(f"Strict load failed for unet: {e}")
+
+    if missing_all or unexpected_all:
+        raise RuntimeError(f"Strict component loading reported issues. missing={missing_all}, unexpected={unexpected_all}")
+
+    # niter/total_it
+    niter = ckpt.get('niter', ckpt.get('total_it', 0))
+    try:
+        return int(niter or 0)
+    except Exception:
+        return 0
 
 def load_lora_weight(model, lora_path, use_ema, device='cuda'):
     # 严格按目标 device 加载权重
@@ -86,3 +152,16 @@ def load_lora_weight(model, lora_path, use_ema, device='cuda'):
             print(f"\nLoaded LoRA weights strictly from {lora_path} with {total_iter} iterations")
 
     return total_iter
+
+def _normalize_sd_keys(sd: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
+    # 统一去除 "module." 前缀，便于严格加载
+    out = {}
+    for k, v in sd.items():
+        if k.startswith('module.'):
+            out[k[7:]] = v
+        else:
+            out[k] = v
+    return out
+
+def _strip_prefix(k: str, prefix: str) -> str:
+    return k[len(prefix):] if k.startswith(prefix) else k

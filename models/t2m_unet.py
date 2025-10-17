@@ -199,7 +199,7 @@ class T2MUnet(nn.Module):
         else:
             #nvtx.push_range("T2MUnet.forward.unet.core", color="purple")
             out_pad = self.unet(
-                x_pad, t=timesteps, cond=enc_text, cond_indices=cond_indices, return_attn_weights=False
+                x_pad, t=timesteps, cond=enc_text, cond_indices=cond_indices
             )
             #nvtx.pop_range()
         #nvtx.pop_range()
@@ -251,7 +251,7 @@ class T2MUnet(nn.Module):
             intermediates['unet_attn'] = unet_w
         else:
             out_pad = self.unet(
-                x_cmb, t_cmb, enc_text, cond_indices, return_attn_weights=False
+                x_cmb, t_cmb, enc_text, cond_indices
             )
 
         out = out_pad[:, :, :T].transpose(1, 2)
